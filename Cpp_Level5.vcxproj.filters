@@ -18,5 +18,8 @@
     <ClCompile Include="Cpp_Level5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

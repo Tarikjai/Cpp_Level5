@@ -1,15 +1,15 @@
 #include <iostream>
 #include <string>
 using namespace std;
- 
-enum enPrimeNotPrim {Prime=1 , NotPrime=2};
+
+enum enPrimeNotPrim { Prime = 1, NotPrime = 2 };
 
 int readNumber() {
 	int Number;
 	do {
 		cout << "Please input a number: " << endl;
 		cin >> Number;
-	} while(Number <= 0);
+	} while (Number <= 0);
 	return Number;
 }
 
@@ -38,5 +38,5 @@ void printPrime(int Number) {
 int main()
 {
 	printPrime(readNumber());
-	 
+
 }
