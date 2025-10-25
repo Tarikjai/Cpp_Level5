@@ -1,0 +1,7 @@
+# Ignorer le dossier Visual Studio
+.vs/
+# Ignorer les fichiers objets et exécutables
+*.obj
+*.exe
+*.pdb
+*.idb
