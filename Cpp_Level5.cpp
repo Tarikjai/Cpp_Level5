@@ -34,7 +34,6 @@ void printPrime(int Number) {
 	}
 }
 
-
 int main()
 {
 	printPrime(readNumber());
