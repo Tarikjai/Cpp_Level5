@@ -29,12 +29,6 @@ void displayperfect(int number) {
             case true:
                 cout << i << endl;
     }
-
-    /*
-    if (isPerfectNumber(number))
-        cout << number << " Is perfect" << endl;
-    else
-        cout << number << " Is Not perfect" << endl;*/
 }
 
 int main() {
