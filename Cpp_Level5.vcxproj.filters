@@ -27,7 +27,10 @@
     <ClCompile Include="3.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileName.cpp">
+    <ClCompile Include="3_mySolution.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>

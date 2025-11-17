@@ -21,13 +21,22 @@ bool  isPerfectNumber(int number) {
     return sum == number;
 }
 
-void displayNumberStatus(int number) {
+
+
+void displayperfect(int number) {
+    for (int i = 1; i < number; i++) {
+        switch (isPerfectNumber(i))
+            case true:
+                cout << i << endl;
+    }
+
+    /*
     if (isPerfectNumber(number))
         cout << number << " Is perfect" << endl;
     else
-        cout << number << " Is Not perfect" << endl;
+        cout << number << " Is Not perfect" << endl;*/
 }
 
 int main() {
-    displayNumberStatus(getPositiveNumber("Please insert Number: "));
+    displayperfect(getPositiveNumber("Please insert Number: "));
 }

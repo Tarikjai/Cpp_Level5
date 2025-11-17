@@ -1,91 +1,42 @@
 #include <iostream>
 #include <string>
 using namespace std;
- 
 
-void printHeader() {
-	cout << "\t\t\t\tMultiplication Table From 1 to 1 " << endl;
-	cout << endl;
-	for (int i = 1; i <= 10; i++) {
-		cout << " \t " << i ;
-	}
-	cout << endl;
-	cout << "____________________________________________________________________________________ " << endl;
-
+int getPositiveNumber(string Message) {
+    int number = 0;
+    while (number <= 0) {
+        cout << Message << endl;
+        cin >> number;
+    }
+    return number;
 }
 
-void printTable() {
-	 
-
-	for (int i = 1;i <= 10; i++) {
-
-			if (i < 10)
-			cout << i << "     |  " ;
-			else 
-				cout << i << "    |  ";
-			for (int j = 1;j <= 10; j++) {
-				cout << i * j << " \t ";
-				
-			}
-			cout << endl;
-	
-
-		
-	}
-	
-
+bool  isPerfectNumber(int number) {
+    int sum = 0;
+    for (int i = 1; i < number; i++) {
+        if (number % i == 0) {
+            sum += i;
+        }
+    }
+    return sum == number;
 }
 
+
+
+void displayperfect(int number) {
+    for (int i=1; i < number; i++) {
+        switch (isPerfectNumber(i))
+            case true:
+                cout << i << endl;
+    }
+
+    /*
+    if (isPerfectNumber(number))
+        cout << number << " Is perfect" << endl;
+    else
+        cout << number << " Is Not perfect" << endl;*/
+}
 
 int main() {
-	printHeader();
-	printTable();
+    displayperfect(getPositiveNumber("Please insert Number: "));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//enum enPerfectNotPerfect {Perfect=2 , NotPerfect=2};
-//
-//int readNumber(string Message) {
-//	int Number;
-//	do {
-//		cout << Message << endl;
-//		cin >> Number;
-//	} while (Number <= 0);
-//	return Number;
-//}
-//
-//int main()
-//{
-//	readNumber("Merci d'inserer votre nombre: ");
-//}
