@@ -12,28 +12,22 @@ int getPositiveNumber(string Message) {
 }
 
 
-void print(int number) {
-
+int Sum(int number) {
     int reminder = 0;
-    int counter = 0;
-    string reversed;
+    int sum = 0;
 
     while (number > 0) {
-        counter++;
-
         reminder = number % 10;
         number = number / 10;
-        cin >> reminder;
-        reversed[counter] = reminder;
-
-
+        sum += reminder;
     }
-    cout << reversed;
-
+    return sum;
 }
+
 
 
 int main() {
 
-    print(getPositiveNumber("Please insert Number: "));
+    cout << "\nSum of Digits = " << Sum(getPositiveNumber("Please insert Number: ")) << "\n";
+
 }
