@@ -12,28 +12,38 @@ int getPositiveNumber(string Message) {
 }
 
 
-void print(int number) {
+int FrequencyCheck(int number, int digit) {
 
     int reminder = 0;
-    int counter = 0;
-    string reversed;
+    int FrequencyCounter = 0;
 
     while (number > 0) {
-        counter++;
+
 
         reminder = number % 10;
         number = number / 10;
-        cin >> reminder;
-        reversed[counter] = reminder;
 
-
+        if (reminder == digit) {
+            FrequencyCounter++;
+         }
     }
-    cout << reversed;
-
+    return  FrequencyCounter;
 }
 
 
+void printResult(int number, int FrequencyCounter) {
+     
+    cout << "Digit " << number << " Frequency is " << FrequencyCounter << " Time(s)";
+
+}
+
 int main() {
 
-    print(getPositiveNumber("Please insert Number: "));
+    int number = getPositiveNumber("Please enter the Number: ");
+    int digit = getPositiveNumber("Please enter the frequency ");
+   
+    
+    printResult(number, FrequencyCheck(number, digit));
+
+
 }
