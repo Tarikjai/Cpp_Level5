@@ -25,20 +25,20 @@ int FrequencyCheck(int number, int digit) {
 
         if (reminder == digit) {
             FrequencyCounter++;
-         }
+        }
     }
     return  FrequencyCounter;
 }
 
- 
+
 
 int main() {
 
     int number = getPositiveNumber("Please enter the Number: ");
     int digit = getPositiveNumber("Please enter the frequency ");
-   
+
     cout << "Digit " << digit << " Frequency is " << FrequencyCheck(number, digit) << " Time(s)";
-   
+
 
 
 }
