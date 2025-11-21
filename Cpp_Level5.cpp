@@ -11,7 +11,6 @@ int getPositiveNumber(string Message) {
     return number;
 }
 
-
 int FrequencyCheck(int number, int digit) {
     int reminder = 0;
     int FrequencyCounter = 0;
@@ -19,6 +18,7 @@ int FrequencyCheck(int number, int digit) {
         reminder = number % 10;
         number = number / 10;
         if (reminder == digit) {
+
             FrequencyCounter++;
          }
     }
@@ -28,7 +28,7 @@ int FrequencyCheck(int number, int digit) {
 int checkDigit(int number) {
     int digit;
     int reminder = 0;
-    
+  
     FrequencyCheck(int number, int digit)
 
 }
