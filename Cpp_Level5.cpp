@@ -11,6 +11,8 @@ int getPositiveNumber(string Message) {
     return number;
 }
 
+
+
 int FrequencyCheck(int number, int digit) {
     int reminder = 0;
     int FrequencyCounter = 0;
@@ -18,38 +20,30 @@ int FrequencyCheck(int number, int digit) {
         reminder = number % 10;
         number = number / 10;
         if (reminder == digit) {
-
             FrequencyCounter++;
          }
     }
     return  FrequencyCounter;
 }
 
-int checkDigit(int number) {
-    int digit;
-    int reminder = 0;
-  
-    FrequencyCheck(int number, int digit)
-
-}
-
 
 
 void printResult(int number) {
-
-    int digit = 0;
-
-    for (int i = 0; number > 0; i++) {
-        cout << "Digit " << digit << " Frequency is " << FrequencyCheck(number, digit) << " Time(s)";
-    }
     
+    for (int i = 0; i <= 9; i++) {
+        if (FrequencyCheck(number, i) > 0) {
+            cout << "Digit " << i << " Frequency is " << FrequencyCheck(number, i) << " Time(s)" << endl;
+        }
+       
+    }
 }
  
 
 int main() {
 
     int number = getPositiveNumber("Please enter the Number: ");
-    printResult(number)
+    printResult(number);
+
 
 
 }
