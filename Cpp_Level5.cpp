@@ -11,7 +11,6 @@ int getPositiveNumber(string Message) {
     return number;
 }
 
-
 int ReverseNumber(int number) {
     int reminder = 0;
     int Reversednumber = 0;
@@ -24,25 +23,25 @@ int ReverseNumber(int number) {
     return  Reversednumber;
 }
 
-void PrintDigits(int Reversednumber) {
-
-    int reminder = 0;
-
-    while (Reversednumber > 0) {
-
-        reminder = Reversednumber % 10;
-        Reversednumber = Reversednumber / 10;
-        cout << reminder << endl;
-    }
 
 
+bool IsPalindromeNumber(int number) {
+    return number == ReverseNumber(number) ;
+} 
+
+void PrintResult(int number ) {
+    if (IsPalindromeNumber(number))
+        cout << "Yes, it's a Palindrome number" << endl;
+    else 
+        cout << "No, it is Not a Palindrome number" << endl;
 }
 
 int main() {
 
     int positiveNumber = getPositiveNumber("Please insert Number: ");
-    PrintDigits(ReverseNumber(positiveNumber)) ;
+    int ReversedNumber=  ReverseNumber(positiveNumber);
+    PrintResult(positiveNumber);
 
-
+    
 
 }
