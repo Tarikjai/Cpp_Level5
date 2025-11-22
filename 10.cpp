@@ -41,7 +41,7 @@ void PrintDigits(int Reversednumber) {
 int main() {
 
     int positiveNumber = getPositiveNumber("Please insert Number: ");
-    PrintDigits(ReverseNumber(positiveNumber)) ;
+    PrintDigits(ReverseNumber(positiveNumber));
 
 
 
