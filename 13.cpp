@@ -11,11 +11,12 @@ int getPositiveNumber(string Message) {
     return number;
 }
 
-void printInvertedPattern(int number) {
+void printNumberPattern(int number) {
     cout << endl;
     cout << "Output: " << endl;
     cout << endl;
-    for (int i = number; i >= 1; i--) {
+
+    for (int i = 1; i <= number; i++) {
         for (int j = 1; j <= i; j++) {
             cout << i;
         }
@@ -30,7 +31,7 @@ void printInvertedPattern(int number) {
 
 int main() {
     int positiveNumber = getPositiveNumber("Please insert Number: ");
-    printInvertedPattern(positiveNumber);
+    printNumberPattern(positiveNumber);
 
 
 }
