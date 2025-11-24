@@ -12,13 +12,19 @@ int getPositiveNumber(string Message) {
 }
 
 void printInvertedPattern(int number) {
+    
+ 
     cout << endl;
     cout << "Output: " << endl;
     cout << endl;
-    for (int i = 64; i >= number; i++) {
-        cout << char(i) << endl;
+
+
+    for (int i = number + 65;   i <= 90; i--) {
+        cout <<  char(i)  << endl;
     }
     cout << endl;
+    //cout << char(66);
+
 }
 
 
