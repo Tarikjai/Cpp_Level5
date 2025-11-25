@@ -18,8 +18,10 @@ void printInvertedPattern(int number) {
     cout << "Output: " << endl;
    
     for (char i = number + 64; i >= 65; i--) {
-        for (char j = i; j >= number; j++)
-        cout << i;
+        for (char j = i - 64; j <= number; j++) {
+            cout << i;
+          
+        }
         cout << endl;
     }
     
