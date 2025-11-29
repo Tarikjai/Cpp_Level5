@@ -17,22 +17,20 @@ void printInvertedPattern(int number) {
     cout << endl;
     cout << "Output: " << endl;
 
-    for (char i = number + 64; i >= 65; i--) {
-        for (char j = number - i; j <= number - 65; j++) {
-            cout << i;
+    for (int i = 65 + number - 1; i >= 65; i--) {
 
+        for (int j = 1; j <= number - (65 + number - 1 - i); j++) {
+            cout << char(i);
         }
+
+
         cout << endl;
     }
 
-    cout << endl;
 
 }
-
 
 int main() {
     int positiveNumber = getPositiveNumber("Please insert Number: ");
     printInvertedPattern(positiveNumber);
-
-
 }
