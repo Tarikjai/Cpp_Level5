@@ -3,7 +3,7 @@
 using namespace std;
 
 
-string getPositiveNumber(string Message) {
+string ReadPassword(string Message) {
     string input = "";
     cout << Message << endl;
     cin >> input;
@@ -12,7 +12,7 @@ string getPositiveNumber(string Message) {
 
  
 
-void printInvertedPattern(string input) {
+void GuessPassword(string input) {
     int counter = 0;
     string word = "";
     cout << endl;
@@ -30,28 +30,35 @@ void printInvertedPattern(string input) {
                     word = word + char(k);
 
                     counter++;
+                   /* cout << word << endl;
+                    word = "";*/
 
-                    /*if (word != input) {
-                        cout << "Trial [" << counter << "] : " << word << endl;
-                        word = "";
-                    }*/
+                   
+                   cout << "Trial [" << counter << "] : " << word << endl;
 
-                    if (word == input) {
-                        cout << "Trial [" << counter << "] : " << word << endl;
+                  
+                   
+
+                   if (word == input) {
+                        cout << endl;
                         cout << "Password is " << word << endl;
                         cout << "Found after " << counter << " Trial(s)" << endl;
                         cout << endl;
-                    }
+                        break;
+                   }
+                   word = "";
+
                 }
-                
+                if (word == input) {
+                    break;
+                }
+                    
+            }
+            if (word == input) {
+                break;
             }
         }
-        /*if (word == input) {
-            cout << "Trial [" << counter << "] : " << word << endl;
-            cout << "Password is " << word << endl;
-            cout << "Found after " << counter << " Trial(s)" << endl;
-            cout << endl;
-        }*/
+         
 }
    
         
@@ -65,5 +72,5 @@ void printInvertedPattern(string input) {
 
 int main() {
     
-    printInvertedPattern(getPositiveNumber("Please enter a password: "));
+    GuessPassword(ReadPassword("Please enter a 3-Letter password (all capital): "));
 }
