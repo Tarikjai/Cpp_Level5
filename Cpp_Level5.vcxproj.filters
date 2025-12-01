@@ -69,5 +69,14 @@
     <ClCompile Include="16.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="17_mySolution.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="17.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="18.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

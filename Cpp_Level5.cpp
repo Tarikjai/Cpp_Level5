@@ -12,7 +12,7 @@ string ReadPassword(string Message) {
 
  
 
-void GuessPassword(string input) {
+bool GuessPassword(string input) {
     int counter = 0;
     string word = "";
     cout << endl;
@@ -25,14 +25,13 @@ void GuessPassword(string input) {
             for (int j = 65; j <= 90; j++) {
                 for (int k = 65; k <= 90; k++) {
 
+                    counter++;
+
                     word = word + char(i);
                     word = word + char(j);
                     word = word + char(k);
 
-                    counter++;
-                   /* cout << word << endl;
-                    word = "";*/
-
+                   
                    
                    cout << "Trial [" << counter << "] : " << word << endl;
 
@@ -44,30 +43,18 @@ void GuessPassword(string input) {
                         cout << "Password is " << word << endl;
                         cout << "Found after " << counter << " Trial(s)" << endl;
                         cout << endl;
-                        break;
+                        return true;
                    }
                    word = "";
-
                 }
-                if (word == input) {
-                    break;
-                }
-                    
             }
-            if (word == input) {
-                break;
-            }
+            
         }
+        return false;
          
 }
    
         
-
-
-
-
- 
- 
 
 
 int main() {
