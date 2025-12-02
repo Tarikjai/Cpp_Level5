@@ -15,7 +15,7 @@ string EncryptionFunction(string Text, short  EncryptionKey) {
 
     for (int i  = 0; i < Text.length(); i++ ){
 
-        Text[i] = char(Text[i] + 65) + EncryptionKey;
+        Text[i] = char(Text[i] + EncryptionKey)   ;
     }
     return Text;
 }
@@ -24,7 +24,7 @@ string DecryptionFunction(string Text, short  EncryptionKey) {
 
     for (int i = 0; i < Text.length(); i++) {
 
-        Text[i] = char(Text[i]-65) -  EncryptionKey;
+        Text[i] = char(Text[i] - EncryptionKey)    ;
     }
     return Text;
 
@@ -34,10 +34,12 @@ string DecryptionFunction(string Text, short  EncryptionKey) {
 
 
 int main() {
-    short EncryptionKey = 5;
+    short EncryptionKey = 2;
     string Text = ReadPassword("Please enter a text: ");
+    string TextAfterEncryption = EncryptionFunction(Text, EncryptionKey);
+    string TextAfterDecryption = DecryptionFunction(TextAfterEncryption, EncryptionKey);
 
     cout << "Text Before Encryption : " << Text << endl;
-    cout << "Text After Encryption : " << EncryptionFunction(Text, EncryptionKey) << endl;
-    cout << "Text After Decryption : " << DecryptionFunction(EncryptionFunction(Text, EncryptionKey), EncryptionKey) << endl;
+    cout << "Text After Encryption : " << TextAfterEncryption << endl;
+    cout << "Text After Decryption : " << TextAfterDecryption << endl;
 }
