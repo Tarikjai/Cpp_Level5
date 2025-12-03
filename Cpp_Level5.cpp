@@ -2,44 +2,17 @@
 #include <string>
 using namespace std;
 
-
-string ReadPassword(string Message) {
-    string Text = "";
-    cout << Message << endl;
-    getline(cin, Text);
-    return Text;
-}
+#include <cstdlib>  // pour rand() et srand()
+#include <ctime>    // pour time()
 
  
-string EncryptionFunction(string Text, short  EncryptionKey) {
-
-    for (int i  = 0; i < Text.length(); i++ ){
-
-        Text[i] = char(Text[i] + EncryptionKey)   ;
-    }
-    return Text;
-}
-   
-string DecryptionFunction(string Text, short  EncryptionKey) {
-
-    for (int i = 0; i < Text.length(); i++) {
-
-        Text[i] = char(Text[i] - EncryptionKey)    ;
-    }
-    return Text;
-
-}
-
-
 
 
 int main() {
-    short EncryptionKey = 2;
-    string Text = ReadPassword("Please enter a text: ");
-    string TextAfterEncryption = EncryptionFunction(Text, EncryptionKey);
-    string TextAfterDecryption = DecryptionFunction(TextAfterEncryption, EncryptionKey);
+    srand(time(nullptr));   // initialise la graine une seule fois
 
-    cout << "Text Before Encryption : " << Text << endl;
-    cout << "Text After Encryption : " << TextAfterEncryption << endl;
-    cout << "Text After Decryption : " << TextAfterDecryption << endl;
+    int nombre = rand() % 10 + 1;   // nombre entre 1 et 10
+
+    cout << "Nombre aleatoire : " << nombre << endl;
+
 }
