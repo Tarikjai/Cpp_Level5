@@ -7,19 +7,19 @@ using namespace std;
 
 int RandomNumber(int From, int To) {
 	int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
-	return RandomNumber;
+	return RandomNumber ;
 }
 
 
-enum enCharacter { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+enum enCharacter { SmallLetter = 1, CapitalLetter=2	, SpecialCharacter=3 , Digit=4 };
 
 
-char printCharachter(enCharacter charcterType) {
+char GetRandomCharachter(enCharacter charcterType) {
 
 	switch (charcterType)
 	{
 	case enCharacter::SmallLetter:
-		return char(RandomNumber(97, 122));
+		return char( RandomNumber(97, 122));
 
 	case enCharacter::CapitalLetter:
 		return char(RandomNumber(65, 90));
@@ -37,9 +37,9 @@ char printCharachter(enCharacter charcterType) {
 int main() {
 
 	srand((unsigned)time(NULL));
-
-	cout << printCharachter(enCharacter::SmallLetter) << endl;
-	cout << printCharachter(enCharacter::CapitalLetter) << endl;
-	cout << printCharachter(enCharacter::SpecialCharacter) << endl;
-	cout << printCharachter(enCharacter::Digit) << endl;
-}
+	
+	cout << GetRandomCharachter(enCharacter::SmallLetter) << endl;
+	cout << GetRandomCharachter(enCharacter::CapitalLetter) << endl;
+	cout << GetRandomCharachter(enCharacter::SpecialCharacter) << endl;
+	cout << GetRandomCharachter(enCharacter::Digit)  << endl;
+}                                                                  
