@@ -6,13 +6,19 @@ using namespace std;
 #include <ctime>    // pour time()
 
  
+int RandomNumber(int From, int To) {
+
+	int RandomNumber = rand() % (To - From +1) + From;                // génère un entier pseudo-aléatoire
+	return RandomNumber;
+}
+
 
 
 int main() {
-    srand(time(nullptr));   // initialise la graine une seule fois
+  
 
-    int nombre = rand() % 10 + 1;   // nombre entre 1 et 10
+	srand((unsigned)time(NULL));
+	
+	cout << RandomNumber(55, 85)  << endl;
 
-    cout << "Nombre aleatoire : " << nombre << endl;
-
-}
+}                                                                  
