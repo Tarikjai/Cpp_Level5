@@ -5,96 +5,72 @@ using namespace std;
 #include <cstdlib>  // pour rand() et srand()
 #include <ctime>    // pour time()
 
+int ReadPositiveNumber(string Message) {
+	int input;
+	do {
+		cout << Message;
+		cin >> input ;
+	} while (input <= 0);
+	return input;
+}
 
 enum enChartype { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
 
-int RandomNumber(int From, int To) {
-	int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
-	return RandomNumber ;
+int GenerateCharacter(int From, int To) {
+	 
+	int Rand = rand() % (To - From + 1) + From;
+	return  Rand;
 }
 
-char GetRandomCharachter(enChartype charType) {
-
-	switch (charType)
-	{
-	case enChartype::SmallLetter:
-		return char(RandomNumber(97, 122));
-
-	case enChartype::CapitalLetter:
-		return char(RandomNumber(65, 90));
-
-	case enChartype::SpecialCharacter:
-		return char(RandomNumber(33, 47));
-
-	case enChartype::Digit:
-		return char(RandomNumber(48, 57));
-
+char  checkLetter(enChartype chartype) {
+	switch (chartype) {
+	case(enChartype::SmallLetter):
+		return GenerateCharacter(97, 122);
+		break;
+	case(enChartype::CapitalLetter):
+		return GenerateCharacter(65, 90);
+		break;
+	case(enChartype::SpecialCharacter):
+		return GenerateCharacter(34, 47);
+		break;
+	case(enChartype::Digit):
+		return GenerateCharacter(48, 57);
+		break;
 	}
 }
 
-int ReadPositiveNumber() {
-	int Input;
-	do {
-		cout << "Please insert the number of keys nedded: ";
-		cin >> Input;
-	} while (Input <= 0);
-	return Input;
+string GenrateWord(enChartype chartype, short length) {
+	 string Word = "";
+
+	 for (int i = 1; i <= length; i++) {
+		 Word += checkLetter(enChartype::CapitalLetter);
+	 }
+	 return Word; 
 }
-
-
-string GenerateWord(enChartype charType, int length) {
-
-	string Word;
-
-	for (int i = 1; i <= length; i++) {
-
-		Word = Word + char(GetRandomCharachter(charType));
-
-	}
-	return Word;
-}
-
 
 string GenerateKey() {
 	string Key = "";
 
-	Key = GenerateWord(enChartype::CapitalLetter, 4) + "-";
-	Key = Key + GenerateWord(enChartype::CapitalLetter, 4) + "-";
-	Key = Key + GenerateWord(enChartype::CapitalLetter, 4) + "-";
-	Key = Key + GenerateWord(enChartype::CapitalLetter, 4)  ;
-
+	Key = GenrateWord(enChartype::CapitalLetter, 4) + "-";
+	Key = Key + GenrateWord(enChartype::CapitalLetter, 4) + "-";
+	Key = Key + GenrateWord(enChartype::CapitalLetter, 4) + "-";
+	Key = Key + GenrateWord(enChartype::CapitalLetter, 4);
 	return Key;
-	/*
-	for (int i = 1; i <= 4; i++) {
-
-		GenerateWord(enChartype::CapitalLetter, 4);
-		if (i <= 3) {
-			cout << "-";
-		}
-	}
-	*/
-
 }
 
+void PrintKeys(int input) {
 
-void GenerateKey(short NumberOfKeys) {
-
-	for (int i = 1; i <= NumberOfKeys; i++) {
-		cout << "Key [" << i << "] : " << GenerateKey();
-
-		 
-
-		cout << endl;
+	for (int i = 1;  i <= input; i++) {
+		cout << "Key [" << i << "] : " << GenerateKey() << endl;
 	}
-	
 }
 
 
 int main() {
 
 	srand((unsigned)time(NULL));
-	
- 
-	GenerateKey(ReadPositiveNumber());
- 
+	 
+
+	PrintKeys(ReadPositiveNumber("How Much keys you want to generate? ")) ;
+
 }                                                                  
