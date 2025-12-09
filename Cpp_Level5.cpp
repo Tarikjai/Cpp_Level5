@@ -14,55 +14,23 @@ int ReadPositiveNumber(string Message) {
 	return input;
 }
 
-enum enChartype { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
 
-int GenerateCharacter(int From, int To) {
-	 
-	int Rand = rand() % (To - From + 1) + From;
-	return  Rand;
-}
+int FrequencyCheck(int number, int digit) {
 
-char  checkLetter(enChartype chartype) {
-	switch (chartype) {
-	case(enChartype::SmallLetter):
-		return GenerateCharacter(97, 122);
-		break;
-	case(enChartype::CapitalLetter):
-		return GenerateCharacter(65, 90);
-		break;
-	case(enChartype::SpecialCharacter):
-		return GenerateCharacter(34, 47);
-		break;
-	case(enChartype::Digit):
-		return GenerateCharacter(48, 57);
-		break;
-	}
-}
+    int reminder = 0;
+    int FrequencyCounter = 0;
 
-string GenrateWord(enChartype chartype, short length) {
-	 string Word = "";
+    while (number > 0) {
 
-	 for (int i = 1; i <= length; i++) {
-		 Word += checkLetter(enChartype::CapitalLetter);
-	 }
-	 return Word; 
-}
 
-string GenerateKey() {
-	string Key = "";
+        reminder = number % 10;
+        number = number / 10;
 
-	Key = GenrateWord(enChartype::CapitalLetter, 4) + "-";
-	Key = Key + GenrateWord(enChartype::CapitalLetter, 4) + "-";
-	Key = Key + GenrateWord(enChartype::CapitalLetter, 4) + "-";
-	Key = Key + GenrateWord(enChartype::CapitalLetter, 4);
-	return Key;
-}
-
-void PrintKeys(int input) {
-
-	for (int i = 1;  i <= input; i++) {
-		cout << "Key [" << i << "] : " << GenerateKey() << endl;
-	}
+        if (reminder == digit) {
+            FrequencyCounter++;
+        }
+    }
+    return  FrequencyCounter;
 }
 
 
