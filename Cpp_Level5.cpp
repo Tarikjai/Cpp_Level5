@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 #include <cstdlib>  // pour rand() et srand()
 #include <ctime>    // pour time()
 
@@ -13,7 +12,6 @@ int ReadPositiveNumber(string Message) {
 	} while (input <= 0);
 	return input;
 }
-
 
 int FrequencyCheck(int number, int digit) {
 
@@ -34,11 +32,21 @@ int FrequencyCheck(int number, int digit) {
 }
 
 
+void ArrayElement(int Element[100], int length) {
+
+    for (int i = 1 ; i <= length; i++) {
+        cout << "Element [" << i << "] : ";
+        cin >> Element[i];
+    }
+    cout << Element[100];
+}
+
+
 int main() {
 
 	srand((unsigned)time(NULL));
-	 
 
-	PrintKeys(ReadPositiveNumber("How Much keys you want to generate? ")) ;
+    int Element[100], length = ReadPositiveNumber("How Much keys you want to generate? ");
 
-}                                                                  
+    ArrayElement(Element, length);
+}

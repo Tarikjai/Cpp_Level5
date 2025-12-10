@@ -5,7 +5,11 @@
       <FullPath>C:\Users\Professional\Documents\C++\Cpp_Level5\x64\Debug\Cpp_Level5.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>
