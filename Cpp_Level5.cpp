@@ -13,61 +13,53 @@ int ReadPositiveNumber(string Message) {
 	return input;
 }
 
-int FrequencyCheck(int number, int digit) {
+ 
 
-    int reminder = 0;
-    int FrequencyCounter = 0;
+void ArrayElement(int Element[100], int& length) {
+    cout << "Enter array elements: " << endl;
 
-    while (number > 0) {
-
-
-        reminder = number % 10;
-        number = number / 10;
-
-        if (reminder == digit) {
-            FrequencyCounter++;
-        }
-    }
-    return  FrequencyCounter;
-}
-
-
-int ArrayElement(int Element[100], int &length) {
-
-    for (int i = 1 ; i <= length; i++) {
-        cout << "Element [" << i << "] : ";
+    for (int i = 0 ; i < length ; i++) {
+        cout << "Element [" << i + 1 << "] : ";
         cin >> Element[i];
     }
-    return Element[100];
+ 
 }
 
 void printArray(int Element[100], int& length) {
     cout << "Original array: ";
-    for (int i = 1; i <= length; i++) {
+    for (int i = 0; i < length; i++) {
         cout <<  Element[i] << " " ;
     }
     cout << endl;
  
 }
 
+ 
 
-void printFrequency() {
+int printFrequency(int Element[100],int length, int digit) {
 
-
+    int frequency=0;
+    for (int i = 0; i < length; i++) {
+        if (Element[i] == digit) {
+            frequency++;
+        }
+    }
+    return frequency;
+    
 }
 
 int main() {
 
 	srand((unsigned)time(NULL));
 
-    int Element[100], length = ReadPositiveNumber("How Much keys you want to generate? ");
+    int Element[100], length = ReadPositiveNumber("Enter number of elements: ");
  
     ArrayElement(Element, length);
-    printArray(Element, length);
+   
 
     int digit = ReadPositiveNumber("Enter the number you want to check: ");
+    printArray(Element, length);
 
-
-    cout << printFrequency( digit);
+    cout << digit << " is repeated " << printFrequency(Element, length, digit) << " times";
 
 }
