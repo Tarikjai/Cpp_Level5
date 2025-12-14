@@ -28,6 +28,7 @@ int SumNumbers(int arr[100], int length){
 }
 
 int main() {
+
 	int arr[100], length = 0;
 	ReadNumber(arr, length);
 	PrintNumber(arr, length);
