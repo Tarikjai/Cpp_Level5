@@ -8,15 +8,15 @@ int ReadPositiveNumber(string Message) {
 	int input;
 	do {
 		cout << Message;
-		cin >> input ;
+		cin >> input;
 	} while (input <= 0);
 	return input;
 }
 
 void ReadArray(int arr[10], int& length) {
 
-	cout << "Enter Number of elements: :\n" ;
-	cin >> length ;
+	cout << "Enter Number of elements: :\n";
+	cin >> length;
 	cout << endl;
 
 	cout << "Enter Array elements: " << endl;
@@ -29,8 +29,8 @@ void ReadArray(int arr[10], int& length) {
 }
 
 void PrintArray(int arr[10], int length) {
-	
-	cout << "\nOriginal array : " ; 
+
+	cout << "\nOriginal array : ";
 	for (int i = 0; i < length; i++) {
 		cout << arr[i] << " ";
 	}
@@ -56,14 +56,13 @@ int main() {
 	int NumberToCheck;
 
 	ReadArray(arr, length);
-	
+
 
 	NumberToCheck = ReadPositiveNumber("Enter the nuumber you want to check :\n");
 
 	PrintArray(arr, length);
 
-	cout << NumberToCheck  << " is repeated " << checkFrequency(arr, length, NumberToCheck) << " time(s)";
+	cout << NumberToCheck << " is repeated " << checkFrequency(arr, length, NumberToCheck) << " time(s)";
 
 
 }
- 
