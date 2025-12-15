@@ -93,5 +93,8 @@
     <ClCompile Include="22.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="23.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
