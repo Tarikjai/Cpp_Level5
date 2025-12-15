@@ -38,6 +38,20 @@ void PrintArray(int arr[100], int& length) {
 }
 
 
+int CheckMAX(int arr[100], int& length) {
+	
+	int Max = 0;
+	for (int i = 0; i < length; i++) {
+		if (Max < arr[i]) {
+			Max = arr[i];
+		}
+		
+	}
+	return Max ;
+}
+
+
+
 int main() {
 	
 	srand((unsigned)time(NULL));
@@ -49,8 +63,7 @@ int main() {
 
 	ReadArray(arr, length);
 	PrintArray(arr, length);
- 
-
+   cout <<   "Max Number is: " <<  CheckMAX(arr, length);
 
 
 
