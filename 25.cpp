@@ -8,7 +8,7 @@ int ReadPositiveNumber(string Message) {
 	int input;
 	do {
 		cout << Message;
-		cin >> input ;
+		cin >> input;
 	} while (input <= 0);
 	return input;
 }
@@ -23,9 +23,9 @@ int RandomNumber(int From, int To) {
 void ReadArray(int arr[100], int& length) {
 
 	for (int i = 0; i < length; i++) {
-		 arr[i] = RandomNumber(1, 100);
+		arr[i] = RandomNumber(1, 100);
 	}
-	
+
 }
 
 
@@ -39,13 +39,13 @@ void PrintArray(int arr[100], int& length) {
 
 
 int CheckMin(int arr[100], int& length) {
-	
+
 	int Min = arr[0];
 	for (int i = 0; i < length; i++) {
 		if (Min > arr[i]) {
 			Min = arr[i];
 		}
-		
+
 	}
 	return Min;
 }
@@ -53,7 +53,7 @@ int CheckMin(int arr[100], int& length) {
 
 
 int main() {
-	
+
 	srand((unsigned)time(NULL));
 
 	int arr[100];
@@ -63,11 +63,10 @@ int main() {
 
 	ReadArray(arr, length);
 	PrintArray(arr, length);
-   cout <<   "Min Number is: " <<  CheckMin(arr, length);
+	cout << "Min Number is: " << CheckMin(arr, length);
 
 
 
 
 
 }
- 
