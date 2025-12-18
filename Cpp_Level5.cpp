@@ -4,70 +4,52 @@ using namespace std;
 #include <cstdlib>  // pour rand() et srand()
 #include <ctime>    // pour time()
 
-int ReadPositiveNumber(string Message) {
-	int input;
-	do {
-		cout << Message;
-		cin >> input ;
-	} while (input <= 0);
-	return input;
-}
-
-
-int RandomNumber(int From, int To) {
-	int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
-	return RandomNumber;
-}
-
-
-void ReadArray(int arr[100], int& length) {
-
-	for (int i = 0; i < length; i++) {
-		 arr[i] = RandomNumber(1, 100);
+void  printTitle() {
+	cout << "\t\t\tMultiplication Table From 1 to 10 \n";
+	cout <<" \n";
+	for (int i = 1; i <= 10; i++) {
+		cout << "\t" << i ;
 	}
+	cout << " \n";
+	cout << "----------------------------------------------------------------------------------\n";
 	
 }
 
+void printTable() {
 
-void PrintArray(int arr[100], int& length) {
-	cout << "Array Elements : ";
-	for (int i = 0; i < length; i++) {
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-}
-
-
-int CheckMin(int arr[100], int& length) {
 	
-	int Min = arr[0];
-	for (int i = 0; i < length; i++) {
-		if (Min > arr[i]) {
-			Min = arr[i];
-		}
+
 		
-	}
-	return Min;
-}
 
+			for (int i = 1; i <= 10; i++) {
+				if (i < 10) {
+					cout << 1 * i << "   | ";
+				}
+				else {
+					cout << 1 * i << "  | ";
+				}
+					
+				for (int j = 1; j <= 10; j++) {
+					cout << "\t" << j * i ;
+				}
+				cout << endl;
+			}
+	
+		   
+
+
+
+
+	
+
+
+}
 
 
 int main() {
 	
-	srand((unsigned)time(NULL));
-
-	int arr[100];
-	int length;
-
-	length = ReadPositiveNumber("Enter the array size :\n");
-
-	ReadArray(arr, length);
-	PrintArray(arr, length);
-   cout <<   "Min Number is: " <<  CheckMin(arr, length);
-
-
-
-
-
+	
+	printTitle();
+	printTable();
 }
  
