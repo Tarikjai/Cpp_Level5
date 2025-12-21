@@ -2,33 +2,64 @@
 #include <string>
 using namespace std;
 
-/*
-int getPositiveNumber(string Message) {
-    int number = 0;
-    do {
-        cout << Message << endl;
-        cin >> number;
-    } while (number <= 0);
-    return number;
+
+string getPositiveNumber(string Message) {
+    string input ="";
+   
+    cout << Message << endl;
+    cin >> input;
+    
+    return input;
 }
-*/
 
 
 
-void print() {
-    for (int i = 65; i <= 90; i++) {
-       for (int j = 65; j <= 90 ; j++) {
-           for (int j = 65; j <= 90; j++) {
-               cout << char(i);
-           }
-       }
-       cout << endl;
-    }
+
+bool print(string input) {
+
+    string word = "";
+     
+    int counter = 0;
+
+  
+
+   
+
+            for (int i = 65; i <= 90; i++) {
+               for (int j = 65; j <= 90 ; j++) {
+                   for (int k = 65; k <= 90; k++) {
+                       word = word + char(i);
+                       word = word + char(j);
+                       word = word + char(k);
+                       counter++;
+                       cout << "Trial [" << counter << "] : " << word << endl;
+
+                       if (input == word) {
+                       
+                           cout << "Password is " << word  << endl;
+                           cout << "Found afterl " << counter << " Trial(s)" << endl;
+                           return true;
+                       }
+
+                       word = "";
+                   }
+          
+               }
+              
+            }
+            
+            return false;
+
+ 
 }
 
 
 int main() {
-    print();
+
+
+   
+
+    print(getPositiveNumber("input"));
 }
 
 //65   90
