@@ -13,53 +13,35 @@ string getPositiveNumber(string Message) {
 }
 
 
+string EncryptText(string input, int Key) {
+    for (char i = 0;i <= input.length(); i++) {
 
-
-bool print(string input) {
-
-    string word = "";
-     
-    int counter = 0;
-
-  
-
-   
-
-            for (int i = 65; i <= 90; i++) {
-               for (int j = 65; j <= 90 ; j++) {
-                   for (int k = 65; k <= 90; k++) {
-                       word = word + char(i);
-                       word = word + char(j);
-                       word = word + char(k);
-                       counter++;
-                       cout << "Trial [" << counter << "] : " << word << endl;
-
-                       if (input == word) {
-                       
-                           cout << "Password is " << word  << endl;
-                           cout << "Found afterl " << counter << " Trial(s)" << endl;
-                           return true;
-                       }
-
-                       word = "";
-                   }
-          
-               }
-              
-            }
-            
-            return false;
-
- 
+         input[i] = input[i] + Key;
+    }
+    return input;
 }
+
+
+string DecryptText(string input, int Key) {
+    for (char i = 0;i <= input.length(); i++) {
+
+        input[i] -= Key;
+    }
+    return input;
+}
+
 
 
 int main() {
 
+    string input = getPositiveNumber("Insert text: ");
+    string EncryptedText = EncryptText(input, 2);
+    string DecryptedText = DecryptText(EncryptedText, 2);
 
-   
+    cout << "Text Before Encryption : " << input << endl;
+    cout << "Text After Encryption : " << EncryptedText << endl;
+    cout << "Text After Decryption : " << DecryptedText << endl;
 
-    print(getPositiveNumber("input"));
 }
 
 //65   90
