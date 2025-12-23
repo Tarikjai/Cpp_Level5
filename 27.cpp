@@ -1,5 +1,5 @@
 #include <iostream>   
-using namespace std;  
+using namespace std;
 
 int RandomNumber(int From, int To)
 {
@@ -10,7 +10,7 @@ int RandomNumber(int From, int To)
 void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
 {
     cout << "\nEnter number of elements:\n";
-    cin >> arrLength;  
+    cin >> arrLength;
     cout << arrLength;
     for (int i = 0; i < arrLength; i++)
         arr[i] = RandomNumber(1, 100);
@@ -21,13 +21,13 @@ void PrintArray(int arr[100], int arrLength)
 
     for (int i = 0; i < arrLength; i++)
         cout << arr[i] << " ";
-    cout << "\n"; 
+    cout << "\n";
 }
 
 
 float AverageArray(int arr[100], int arrLength)
 {
-    int Sum = 0; 
+    int Sum = 0;
     float average = 0;
     for (int i = 0; i < arrLength; i++)
     {
@@ -39,11 +39,11 @@ float AverageArray(int arr[100], int arrLength)
 
 
 int main() {
-   
+
     srand((unsigned)time(NULL));
 
-    int arr[100];    
-    int arrLength;  
+    int arr[100];
+    int arrLength;
 
 
     FillArrayWithRandomNumbers(arr, arrLength);
@@ -51,7 +51,7 @@ int main() {
     cout << "\nArray Elements: ";
     PrintArray(arr, arrLength);
 
- 
+
     cout << "\nAverage of all number is : ";
     cout << AverageArray(arr, arrLength) << endl;
 
