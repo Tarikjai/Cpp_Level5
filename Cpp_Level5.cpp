@@ -1,47 +1,53 @@
-#include <iostream>
-#include <string>
+#include <iostream>   // Include iostream for input/output operations.
+#include <string>     // Include string to use std::string (though not used in this example).
+#include <cstdlib>    // Include cstdlib for rand() and srand() functions.
+#include <ctime>      // Include ctime for the time() function.
 using namespace std;
 
 
-string getPositiveNumber(string Message) {
-    string input ="";
+int ReadPositiveNumber(string Message){
+    int number = 0;
+    while (number <= 0) {
+        cout << Message << endl;
+        cin >> number;
+    }
+    return number;
+}
+
+int RandomNumber(int From, int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum; 
+}
+
+
+void ReadElement(int arr[100], int& length) {
    
-    cout << Message << endl;
-    cin >> input;
+    for (int i = 0; i <= length -1 ; i++) {
+        arr[i] = RandomNumber(1, 100);
+    }
+     
+}
+
+void printarray(int arr[100], int& length) {
+    cout << "Array Element: ";
+    for (int i = 0; i <= length - 1; i++) {
+       cout << arr[i] << " ";
+    }
     
-    return input;
-}
-
-
-string EncryptText(string input, int Key) {
-    for (char i = 0;i <= input.length(); i++) {
-
-         input[i] = input[i] + Key;
-    }
-    return input;
-}
-
-
-string DecryptText(string input, int Key) {
-    for (char i = 0;i <= input.length(); i++) {
-
-        input[i] -= Key;
-    }
-    return input;
 }
 
 
 
 int main() {
 
-    string input = getPositiveNumber("Insert text: ");
-    string EncryptedText = EncryptText(input, 2);
-    string DecryptedText = DecryptText(EncryptedText, 2);
+    int arr[100];
+    int length = ReadPositiveNumber("How much element in the array: ");
 
-    cout << "Text Before Encryption : " << input << endl;
-    cout << "Text After Encryption : " << EncryptedText << endl;
-    cout << "Text After Decryption : " << DecryptedText << endl;
+    srand((unsigned)time(NULL));
 
+    ReadElement(arr, length);
+    printarray(arr, length);
+   
+    return 0;  
 }
-
-//65   90
