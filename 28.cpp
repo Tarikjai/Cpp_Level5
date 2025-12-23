@@ -11,7 +11,7 @@ void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
 {
     cout << "\nEnter number of elements:\n";
     cin >> arrLength;
-    
+
     for (int i = 0; i < arrLength; i++)
         arr[i] = RandomNumber(1, 100);
 }
@@ -29,9 +29,9 @@ void copyArray(int arr[100], int arr2[100], int arrLength)
 
     for (int i = 0; i < arrLength; i++) {
         arr2[i] = arr[i];
-       // cout << arr2[i] << " ";
+        // cout << arr2[i] << " ";
     }
-       
+
     cout << "\n";
 
 }
@@ -44,7 +44,7 @@ int main() {
     srand((unsigned)time(NULL));
 
     int arr[100];
-    
+
     int arrLength;
 
 
@@ -57,7 +57,7 @@ int main() {
     copyArray(arr, arr2, arrLength);
 
     cout << "\nArray 2 elements after copy : ";
-    
+
 
     PrintArray(arr2, arrLength);
     return 0;  // Return 0 to indicate successful program execution.
