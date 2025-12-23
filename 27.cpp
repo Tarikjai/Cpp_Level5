@@ -11,7 +11,7 @@ void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
 {
     cout << "\nEnter number of elements:\n";
     cin >> arrLength;
-    cout << arrLength;
+
     for (int i = 0; i < arrLength; i++)
         arr[i] = RandomNumber(1, 100);
 }
@@ -24,17 +24,27 @@ void PrintArray(int arr[100], int arrLength)
     cout << "\n";
 }
 
-
-float AverageArray(int arr[100], int arrLength)
+int SumArray(int arr[100], int arrLength)
 {
-    int Sum = 0;
-    float average = 0;
+    int Sum = 0;  // Initialize sum to zero.
+
+    // Loop through each element of the array and add it to Sum.
     for (int i = 0; i < arrLength; i++)
     {
         Sum += arr[i];
     }
-    average = Sum / float(arrLength);
-    return average;
+
+    return Sum;  // Return the calculated sum.
+}
+
+
+float AverageArray(int arr[100], int arrLength)
+{
+
+    float average = 0;
+
+    return SumArray(arr, arrLength) / float(arrLength);
+
 }
 
 
