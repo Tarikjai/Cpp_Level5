@@ -42,8 +42,6 @@ void sumArrays(int arr[100], int arr2[100], int arrLength, int SumArr[100]) {
 
 }
 
-
-
 int main() {
     srand((unsigned)time(NULL));
 
@@ -57,7 +55,6 @@ int main() {
     FillArrayWithRandomNumbers(arr2, arrLength);
 
     //CopyOnlyPrimeNumbers(arr, arr2, arrLength, arr2Length);
-
 
     cout << "\nArray 1 Elements: ";
     PrintArray(arr, arrLength);
