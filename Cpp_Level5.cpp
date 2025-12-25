@@ -1,7 +1,6 @@
 #include <iostream>  
 using namespace std;
 
-
 int getPositiveNumber(string Message) {
     int number = 0;
     while (number <= 0) {
@@ -10,11 +9,11 @@ int getPositiveNumber(string Message) {
     }
     return number;
 }
+
 int RandomNumber(int From, int To) {
     int randNum = rand() % (To - From + 1) + From;
     return randNum;
 }
-
 
 void swapFunction(int& A, int& B) {
     int temp;
@@ -24,7 +23,6 @@ void swapFunction(int& A, int& B) {
     B = temp;
 }
 
-
 void fillNumber1toN(int arr[100], int arrLength) {
     for (int i = 0; i < arrLength; i++) {
         arr[i] = i + 1;
@@ -32,7 +30,6 @@ void fillNumber1toN(int arr[100], int arrLength) {
 }
 
 void ShuffleArray(int arr[100], int arrLength) {
-
     int arr1Index, arr2Index;
     for (int i = 0; i < arrLength; i++) {
 
@@ -42,8 +39,6 @@ void ShuffleArray(int arr[100], int arrLength) {
         swapFunction(arr[arr1Index], arr[arr2Index]);
     }
 }
-
-
 
 void PrintArray(int arr[100], int arrLength) {
     for (int i = 0; i < arrLength; i++) {
