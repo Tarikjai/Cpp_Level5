@@ -15,30 +15,29 @@ int RandomNumber(int From, int To) {
     return randNum;
 }
 
-void swapFunction(int& A, int& B) {
-    int temp;
 
-    temp = A;
-    A = B;
-    B = temp;
+void checkPosition(int arr[100], int arrLength, int digit) {
+    for (int i = 0; i < arrLength; i++) {
+        if (digit == arr[i]) {
+            cout << "\nNumber found  at position:  " << i;
+            cout << "\nNumber found  at order:  " << i + 1 << "\n";
+
+        }
+       
+    }
+    
+         cout << "\nNumber not found    ";
 }
 
-void fillNumber1toN(int arr[100], int arrLength) {
+
+
+void fillNumber(int arr[100], int arrLength) {
     for (int i = 0; i < arrLength; i++) {
-        arr[i] = i + 1;
+        arr[i] = RandomNumber(1, 100);
     }
 }
 
-void ShuffleArray(int arr[100], int arrLength) {
-    int arr1Index, arr2Index;
-    for (int i = 0; i < arrLength; i++) {
 
-        arr1Index = RandomNumber(1, arrLength) - 1;
-        arr2Index = RandomNumber(1, arrLength) - 1;
-
-        swapFunction(arr[arr1Index], arr[arr2Index]);
-    }
-}
 
 void PrintArray(int arr[100], int arrLength) {
     for (int i = 0; i < arrLength; i++) {
@@ -51,20 +50,19 @@ int main() {
 
     int arr[100];
 
-
     int arrLength = getPositiveNumber(" ");
 
-    fillNumber1toN(arr, arrLength);
+    fillNumber(arr, arrLength);
 
-    cout << "\nArray Elements before shuffle: ";
+    cout << "\nArray 1 Elements: ";
     PrintArray(arr, arrLength);
 
+    int digit = getPositiveNumber("\n\nPlease enter a number to search for ?");
+   // ShuffleArray(arr, arrLength);
 
-    ShuffleArray(arr, arrLength);
-
-    cout << "\nArray Element after shuffles: ";
-    PrintArray(arr, arrLength);
-    cout << "  " << endl;
+    cout << "\nNumber you are looking for is:  " << digit << "\n";
+    
+    checkPosition(arr, arrLength, digit);
 
     return 0;
 }
