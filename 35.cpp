@@ -18,17 +18,17 @@ int RandomNumber(int From, int To) {
 short FindNumberPositionInArray(int arr[100], int arrLength, int digit) {
     for (int i = 0; i < arrLength; i++) {
         if (digit == arr[i]) {
-           
+
             return   i;
         }
- 
+
     }
     return -1;
-       
+
 }
 
 bool IsNumberInArray(int arr[100], int arrLength, int digit) {
-     
+
     return FindNumberPositionInArray(arr, arrLength, digit) != -1;
 
 }
@@ -59,21 +59,21 @@ int main() {
     PrintArray(arr, arrLength);
 
     int digit = getPositiveNumber("\n\nPlease enter a number to search for ?");
-   // ShuffleArray(arr, arrLength);
+    // ShuffleArray(arr, arrLength);
 
     cout << "\nNumber you are looking for is:  " << digit << "\n";
-     
+
 
     if (IsNumberInArray(arr, arrLength, digit)) {
 
-       
+
         cout << "\nYes The number is  found :-)\n";
     }
     else {
-     
+
         cout << "\nNo The number is not found :-(\n";
     }
- 
+
 
     return 0;
 }
