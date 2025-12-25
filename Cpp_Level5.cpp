@@ -16,17 +16,16 @@ int RandomNumber(int From, int To) {
 }
 
 
-void checkPosition(int arr[100], int arrLength, int digit) {
+short checkPosition(int arr[100], int arrLength, int digit) {
     for (int i = 0; i < arrLength; i++) {
         if (digit == arr[i]) {
-            cout << "\nNumber found  at position:  " << i;
-            cout << "\nNumber found  at order:  " << i + 1 << "\n";
-
+           
+            return   i;
         }
-       
+ 
     }
-    
-         cout << "\nNumber not found    ";
+    return -1;
+       
 }
 
 
@@ -62,7 +61,16 @@ int main() {
 
     cout << "\nNumber you are looking for is:  " << digit << "\n";
     
-    checkPosition(arr, arrLength, digit);
+    short Positionn = checkPosition(arr, arrLength, digit); 
+
+    if (Positionn == -1) {
+        cout << "\nNumber not found  :(  ";
+    }
+    else {
+        cout << "\nNumber found  at position:  " << Positionn;
+        cout << "\nNumber found  at order:  " << Positionn  +1 << "\n";
+    }
+ 
 
     return 0;
 }
