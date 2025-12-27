@@ -1,68 +1,51 @@
 #include <iostream>
-#include <string>
 using namespace std;
-#include <cstdlib>  // pour rand() et srand()
-#include <ctime>    // pour time()
 
-int ReadPositiveNumber(string Message) {
-	int input;
-	do {
-		cout << Message;
-		cin >> input;
-	} while (input <= 0);
-	return input;
+int ReadNumber()
+{
+    int Number;
+    cout << "\nPlease enter a number? ";
+    cin >> Number;
+    return Number;
 }
 
-void ReadArray(int arr[10], int& length) {
-
-	cout << "Enter Number of elements: :\n";
-	cin >> length;
-	cout << endl;
-
-	cout << "Enter Array elements: " << endl;
-
-	for (int i = 0; i < length; i++) {
-		cout << "Element [" << i + 1 << "] : ";
-		cin >> arr[i];
-	}
-	cout << endl;
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+    arrLength++;
+    arr[arrLength - 1] = Number;
 }
 
-void PrintArray(int arr[10], int length) {
+void InputUserNumbersInArray(int arr[100], int& arrLength)
+{
+    bool AddMore = true;
 
-	cout << "\nOriginal array : ";
-	for (int i = 0; i < length; i++) {
-		cout << arr[i] << " ";
-	}
-	cout << endl;
+    do
+    {
+        AddArrayElement(ReadNumber(), arr, arrLength);
+
+        cout << "\nDo you want to add more numbers? [0]:No,[1]:yes? ";
+        cin >> AddMore;
+
+    } while (AddMore);
 }
 
-
-int checkFrequency(int arr[10], int length, int NumberToCheck) {
-	int frequency = 0;
-
-	for (int i = 0; i < length; i++) {
-
-		if (NumberToCheck == arr[i]) {
-			frequency++;
-		}
-	}
-	return frequency;
+void PrintArray(int arr[100], int arrLength)
+{
+    for (int i = 0; i < arrLength; i++)
+        cout << arr[i] << " ";
+    cout << "\n";
 }
 
-int main() {
-	int arr[10];
-	int length;
-	int NumberToCheck;
+int main()
+{
+    int arr[100];
+    int arrLength = 0;
 
-	ReadArray(arr, length);
+    InputUserNumbersInArray(arr, arrLength);
 
+    cout << "\nArray Length: " << arrLength << endl;
+    cout << "Array elements: ";
+    PrintArray(arr, arrLength);
 
-	NumberToCheck = ReadPositiveNumber("Enter the nuumber you want to check :\n");
-
-	PrintArray(arr, length);
-
-	cout << NumberToCheck << " is repeated " << checkFrequency(arr, length, NumberToCheck) << " time(s)";
-
-
+    return 0;
 }

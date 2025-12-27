@@ -1,53 +1,77 @@
-#include <iostream>  
+#include <iostream>   
 using namespace std;
 
-int ReadNumber(string Message) {
-    int number = 0;
-   // while (number <= 0) {
-        cout << Message << endl;
-        cin >> number;
-   // }
-    return number;
+int RandomNumber(int From, int To)
+{
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
 }
 
-int AddArrayElement(int number ,int arr[100], int& arrLength) {
-    arrLength++;
-    arr[arrLength-1]= number ;
-   
-    return number;
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+    cout << "\nEnter number of elements:\n";
+    cin >> arrLength;
+
+    for (int i = 0; i < arrLength; i++)
+        arr[i] = RandomNumber(1, 100);
 }
 
-void InputUserNumbersInArray(int arr[100], int& arrLength) {
-    
-    
-    bool AddMore = true ;
+void PrintArray(int arr[100], int arrLength)
+{
 
-    do {
-        AddArrayElement(ReadNumber("Please enter a number: "), arr,  arrLength);
-       
-        cout << "Do you want to add more numbers? [0]:No, [1]:Yes ? ";
-        cin >> AddMore;
-    } while (AddMore) ;
-     
-  
-}
-
-void PrintArray(int arr[100], int arrLength) {
-    for (int i = 0; i < arrLength; i++) {
+    for (int i = 0; i < arrLength; i++)
         cout << arr[i] << " ";
-    }
+    cout << "\n";
 }
+
+
+
+
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+    arrLength++;
+    arr[arrLength - 1] = Number;
+}
+
+void CopyArrayUsingAddArrayElement(int arr[100], int arr2[100], int arrLength, int &arr2Length)
+{
+
+    for (int i = 0; i < arrLength; i++) {
+        AddArrayElement(arr[i], arr2, arr2Length);
+    }
+
+    cout << "\n";
+
+}
+
+
+
 
 int main() {
-   
+
+    srand((unsigned)time(NULL));
 
     int arr[100];
+
     int arrLength=0;
 
-    InputUserNumbersInArray(arr, arrLength);
-    cout << "\nArray lenght: " << arrLength;
-    cout << "\nArray elements: ";
+
+    FillArrayWithRandomNumbers(arr, arrLength);
+
    
+
+    int arr2[100];
+    int arr2Length=0;
+
+
+    CopyArrayUsingAddArrayElement(arr, arr2, arrLength, arr2Length);
+
+    cout << "\nArray Elements: ";
     PrintArray(arr, arrLength);
-    cout << "\n ";
+
+    cout << "\nArray 2 elements after copy : ";
+
+
+    PrintArray(arr2, arr2Length);
+    return 0;  // Return 0 to indicate successful program execution.
 }
