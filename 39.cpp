@@ -46,12 +46,12 @@ void PrintArray(int arr[100], int arrLength)
 }
 
 void CopyPrimeNumbers(int arr[100], int arr2[100], int arrLength, int& arr2Length)
-{ 
+{
 
     for (int i = 0; i < arrLength; i++) {
         if (checkPrime(arr[i]) == enPrimeNotPrim::Prime) {
             AddArrayElement(arr[i], arr2, arr2Length);
-            
+
         }
     }
     cout << "\n";
@@ -62,7 +62,7 @@ int main() {
     srand((unsigned)time(NULL));
 
     int arr[100];
-    int arrLength=0;
+    int arrLength = 0;
 
     FillArrayWithRandomNumbers(arr, arrLength);
     int arr2[100];
@@ -75,6 +75,6 @@ int main() {
 
     cout << "\nArray 2 Prime numbers : ";
     PrintArray(arr2, arr2Length);
-    
+
 
 }
