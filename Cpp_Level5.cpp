@@ -1,80 +1,74 @@
 #include <iostream>   
 using namespace std;
 
-enum enPrimeNotPrim { Prime = 1, NotPrime = 2 };
-
-enPrimeNotPrim checkPrime(int Number) {
-    int M = round(Number / 2);
-
-    for (int counter = 2; counter <= M; counter++)
-    {
-        if (Number % counter == 0)
-            return enPrimeNotPrim::NotPrime;
-    }
-    return enPrimeNotPrim::Prime;
+void Fillarray(int arrSource[10], int& SourceLength) {
+    SourceLength = 10;
+    arrSource[0] = 10;
+    arrSource[1] = 10;
+    arrSource[2] = 10;
+    arrSource[3] = 50;
+    arrSource[4] = 50;
+    arrSource[5] = 70;
+    arrSource[6] = 70;
+    arrSource[7] = 70;
+    arrSource[8] = 70;
+    arrSource[9] = 90;
 }
 
-
-int RandomNumber(int From, int To)
-{
-    int randNum = rand() % (To - From + 1) + From;
-    return randNum;
-}
-
-
-void AddArrayElement(int Number, int arr[100], int& arrLength)
-{
-    arrLength++;
-    arr[arrLength - 1] = Number;
-}
-
-void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
-{
-    cout << "\nEnter number of elements:\n";
-    cin >> arrLength;
-
-    for (int i = 0; i < arrLength; i++)
-        arr[i] = RandomNumber(1, 100);
-}
-
-void PrintArray(int arr[100], int arrLength)
-{
-
+void PrintArray(int arr[100], int arrLength){
     for (int i = 0; i < arrLength; i++)
         cout << arr[i] << " ";
     cout << "\n";
 }
 
-void CopyPrimeNumbers(int arr[100], int arr2[100], int arrLength, int& arr2Length)
-{ 
-
-    for (int i = 0; i < arrLength; i++) {
-        if (checkPrime(arr[i]) == enPrimeNotPrim::Prime) {
-            AddArrayElement(arr[i], arr2, arr2Length);
-            
-        }
+short FindNumberPositionInArray(int Number, int arrSource[100], int& SourceLength) {
+    for (int i = 0; i < SourceLength; i++) {
+        if (arrSource[i] == Number)
+            return i;
     }
-    cout << "\n";
+    return -1;
 }
 
+void AddArrayElement(int Number, int arrSource[100], int& SourceLength)
+{
+    SourceLength++;
+    arrSource[SourceLength - 1] = Number;
+}
+
+bool checkPresence(int Number, int arrSource[100], int& SourceLength) {
+    return FindNumberPositionInArray(Number, arrSource, SourceLength) != -1;
+}
+ 
+void CopyDistinctNumbersToArray(int arrSource[100], int& SourceLength,
+    int arrDestination[100], int& DestinationLength) {
+
+    for (int i = 0; i < SourceLength; i++) {
+        if (!checkPresence(arrSource[i], arrDestination, DestinationLength)) {
+            AddArrayElement(arrSource[i], arrDestination, DestinationLength);
+        }
+    }
+}
+
+    
 
 int main() {
     srand((unsigned)time(NULL));
 
-    int arr[100];
-    int arrLength=0;
+    int arrSource[100];
+    int SourceLength = 0;
 
-    FillArrayWithRandomNumbers(arr, arrLength);
-    int arr2[100];
-    int arr2Length = 0;
+    Fillarray(arrSource, SourceLength);
 
-    CopyPrimeNumbers(arr, arr2, arrLength, arr2Length);
+    int arrDestination[100];
+    int DestinationLength = 0;
 
-    cout << "\nArray Elements: ";
-    PrintArray(arr, arrLength);
+    CopyDistinctNumbersToArray(arrSource, SourceLength, arrDestination, DestinationLength);
 
-    cout << "\nArray 2 Prime numbers : ";
-    PrintArray(arr2, arr2Length);
-    
+    cout << "\nArray 1 Elements: ";
+    PrintArray(arrSource, SourceLength);
+
+    cout << "\nArray 2 Distinct Elements : ";
+    PrintArray(arrDestination, DestinationLength);
+
 
 }
