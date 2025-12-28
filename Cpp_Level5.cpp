@@ -1,7 +1,7 @@
 #include <iostream>   
 using namespace std;
 
-
+ 
 int getPositiveNumber(string Message) {
     int Number;
     do {
@@ -11,52 +11,48 @@ int getPositiveNumber(string Message) {
     return Number;
 }
 
-
-
-void ReadArray(int arr[100], int Number) {
-    cout << "Enter array elements: \n";
-    for (int i = 0; i < Number; i++) {
-        cout << "Element [" << i+1  << "] : ";
-        cin >> arr[i];
+int RandomNumber(int From, int To) {
+    int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
+    return RandomNumber;
+}
+ 
+void FillArrayWithRandomNumbers(int arrSource[100], int& Sourcelength) {
+    for (int i =0; i < Sourcelength; i++) {
+        arrSource[i] = RandomNumber(1, 100);
     }
-    
+}
+ 
+void copyInReversedOrder(int arrSource[100], int arrSource2[100], int Sourcelength) {
+    for (int i = 0; i < Sourcelength; i++) {
+        arrSource2[i] = arrSource[Sourcelength-i-1] ;
+         
+    }
 }
 
-void PrintArray(int arr[100], int Number) {
-
+void PrintArray(int arrSource[100], int Number) {
     for (int i = 0; i < Number; i++) {
-        cout << arr[i] << " ";
+        cout << arrSource[i] << " ";
     }
     cout << "\n";
 }
-
-int checkFrequency(int digit , int arr[100], int length) {
-    int counter = 0;
-    for (int i = 0; i < length; i++) {
-        if (arr[i] == digit)
-            counter++;
-    }
-    return counter;
-}
+ 
 
 
 int main() {
-    
     srand((unsigned)time(NULL));
 
-    int arr[100];
+    int arrSource[100];
+    int Sourcelength = getPositiveNumber("");
+    int arrSource2[100];   
 
-    int length = getPositiveNumber("");
-
-    ReadArray(arr, length);
-
-    int digit = getPositiveNumber("Enter the number you want to ckeck: ");
-     
-
-    cout << "Original array : ";
-    PrintArray(arr, length);
+    FillArrayWithRandomNumbers(arrSource, Sourcelength);
+ 
+    cout << "Array 1 elements : ";
+    PrintArray(arrSource, Sourcelength);
+  
+    cout << "\nArray 2 elements after copying array1 in reversed order : ";
+    copyInReversedOrder(arrSource, arrSource2, Sourcelength);
    
-    cout << digit << " is repeated " << checkFrequency(digit, arr, length) << " time(s)";
-
-
+    PrintArray(arrSource2, Sourcelength);
+    cout << "\n";
 }
