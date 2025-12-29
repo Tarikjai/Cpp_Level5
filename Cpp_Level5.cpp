@@ -1,7 +1,9 @@
 #include <iostream>   
 using namespace std;
 
- 
+
+enum enChartype { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+
 int getPositiveNumber(string Message) {
     int Number;
     do {
@@ -16,22 +18,61 @@ int RandomNumber(int From, int To) {
     return RandomNumber;
 }
  
-void FillArrayWithRandomNumbers(int arrSource[100], int& Sourcelength) {
-    for (int i =0; i < Sourcelength; i++) {
-        arrSource[i] = RandomNumber(1, 100);
-    }
+char GetRandomCharachter(enChartype charType) {
+
+	switch (charType)
+	{
+	case enChartype::SmallLetter:
+		return char(RandomNumber(97, 122));
+
+	case enChartype::CapitalLetter:
+		return char(RandomNumber(65, 90));
+
+	case enChartype::SpecialCharacter:
+		return char(RandomNumber(33, 47));
+
+	case enChartype::Digit:
+		return char(RandomNumber(48, 57));
+
+	}
 }
- 
-void copyInReversedOrder(int arrSource[100], int arrSource2[100], int Sourcelength) {
-    for (int i = 0; i < Sourcelength; i++) {
-        arrSource2[i] = arrSource[Sourcelength-i-1] ;
-         
+
+string GenerateWord(enChartype charType, int length) {
+
+	string Word;
+
+	for (int i = 1; i <= length; i++) {
+
+		Word = Word + char(GetRandomCharachter(charType));
+
+	}
+	return Word;
+}
+
+
+string GenerateKey() {
+	string Key = "";
+
+	Key = GenerateWord(enChartype::CapitalLetter, 4) + "-";
+	Key = Key + GenerateWord(enChartype::CapitalLetter, 4) + "-";
+	Key = Key + GenerateWord(enChartype::CapitalLetter, 4) + "-";
+	Key = Key + GenerateWord(enChartype::CapitalLetter, 4);
+
+	return Key;
+
+
+}
+
+void FillArrayWithRandomNumbers(string arrSource[100], int& Sourcelength) {
+    for (char i =0; i < Sourcelength; i++) {
+        arrSource[i] = GenerateKey();
     }
 }
 
-void PrintArray(int arrSource[100], int Number) {
-    for (int i = 0; i < Number; i++) {
-        cout << arrSource[i] << " ";
+
+void PrintArray(string arrSource[100], int Number) {
+    for (char i = 0; i < Number; i++) {
+        cout <<"Array ["<<i+1 << "] : " << arrSource[i] << " \n" ;
     }
     cout << "\n";
 }
@@ -41,18 +82,14 @@ void PrintArray(int arrSource[100], int Number) {
 int main() {
     srand((unsigned)time(NULL));
 
-    int arrSource[100];
+	string arrSource[100];
     int Sourcelength = getPositiveNumber("");
-    int arrSource2[100];   
-
-    FillArrayWithRandomNumbers(arrSource, Sourcelength);
+     
+	FillArrayWithRandomNumbers( arrSource, Sourcelength);
  
-    cout << "Array 1 elements : ";
+    cout << "Array elements : \n\n";
     PrintArray(arrSource, Sourcelength);
   
-    cout << "\nArray 2 elements after copying array1 in reversed order : ";
-    copyInReversedOrder(arrSource, arrSource2, Sourcelength);
    
-    PrintArray(arrSource2, Sourcelength);
     cout << "\n";
 }

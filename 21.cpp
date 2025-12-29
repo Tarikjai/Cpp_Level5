@@ -64,15 +64,7 @@ string GenerateKey() {
 	Key = Key + GenerateWord(enChartype::CapitalLetter, 4);
 
 	return Key;
-	/*
-	for (int i = 1; i <= 4; i++) {
-
-		GenerateWord(enChartype::CapitalLetter, 4);
-		if (i <= 3) {
-			cout << "-";
-		}
-	}
-	*/
+ 
 
 }
 
