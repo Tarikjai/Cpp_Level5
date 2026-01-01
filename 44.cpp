@@ -23,7 +23,7 @@ void ReadArray(int arrSource[100], int& Sourcelength) {
 
     cin >> Sourcelength;
     for (int i = 0; i < Sourcelength; i++) {
-          arrSource[i] = RandomNumber(-100, 100);
+        arrSource[i] = RandomNumber(-100, 100);
     }
 }
 
@@ -41,7 +41,7 @@ int checkPositiveNumbers(int arrSource[100], int Sourcelength) {
             counter++;
     }
     return counter;
-  
+
 
 }
 
@@ -49,17 +49,17 @@ int main() {
 
     int arrSource[100];
     int Sourcelength;
- 
+
     srand((unsigned)time(NULL));
 
     ReadArray(arrSource, Sourcelength);
-    
-   
+
+
     cout << "Array elements : ";
 
     PrintArray(arrSource, Sourcelength);
 
-    cout << "\nEven Numbers count is: " << checkPositiveNumbers( arrSource,  Sourcelength)         ;
+    cout << "\nPositive Numbers count is: " << checkPositiveNumbers(arrSource, Sourcelength);
 
 
     cout << endl;
