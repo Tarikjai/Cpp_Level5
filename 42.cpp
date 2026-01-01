@@ -23,7 +23,7 @@ void ReadArray(int arrSource[100], int& Sourcelength) {
 
     cin >> Sourcelength;
     for (int i = 0; i < Sourcelength; i++) {
-          arrSource[i] = RandomNumber(1, 100);
+        arrSource[i] = RandomNumber(1, 100);
     }
 }
 
@@ -42,7 +42,7 @@ int checkOddNumbers(int arrSource[100], int Sourcelength) {
         }
     }
     return counter;
-  
+
 
 }
 
@@ -50,21 +50,21 @@ int main() {
 
     int arrSource[100];
     int Sourcelength;
- 
+
     srand((unsigned)time(NULL));
 
     ReadArray(arrSource, Sourcelength);
-    
-   
+
+
     cout << "Array elements : ";
 
     PrintArray(arrSource, Sourcelength);
 
 
-   
 
-    cout << "\nOdd Numbers count is: " <<  checkOddNumbers( arrSource,  Sourcelength)         ;
- 
+
+    cout << "\nOdd Numbers count is: " << checkOddNumbers(arrSource, Sourcelength);
+
 
 
     cout << endl;
