@@ -162,5 +162,14 @@
     <ClCompile Include="44.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="45.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="46.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="47.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

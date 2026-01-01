@@ -2,7 +2,7 @@
 using namespace std;
 
 
- 
+
 
 
 int MyFloorResult(float number) {
@@ -11,7 +11,7 @@ int MyFloorResult(float number) {
         return int(number);
     }
     else {
-        return number -1 ;
+        return number - 1;
     }
 }
 
@@ -30,14 +30,14 @@ float ReadNumber() {
 int main() {
 
     float number = ReadNumber();
-  
-   
+
+
     cout << "My Floor Resut : " << MyFloorResult(number);
 
-   // PrintArray(arrSource, Sourcelength);
+    // PrintArray(arrSource, Sourcelength);
 
     cout << "\nC++ Floor Result: " << floor(number);
 
 
     cout << endl;
-} 
+}

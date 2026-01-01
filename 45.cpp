@@ -34,10 +34,10 @@ void PrintArray(int arrSource[100], int Sourcelength) {
     }
 }
 
-int checkPositiveNumbers(int arrSource[100], int Sourcelength) {
+int checkNegativeNumbers(int arrSource[100], int Sourcelength) {
     int counter = 0;
     for (int i = 0; i < Sourcelength; i++) {
-        if (arrSource[i] >= 0)
+        if (arrSource[i] < 0)
             counter++;
     }
     return counter;
@@ -59,7 +59,7 @@ int main() {
 
     PrintArray(arrSource, Sourcelength);
 
-    cout << "\nPositive Numbers count is: " << checkPositiveNumbers(arrSource, Sourcelength);
+    cout << "\nNegative Numbers count is: " << checkNegativeNumbers(arrSource, Sourcelength);
 
 
     cout << endl;
