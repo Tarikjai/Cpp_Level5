@@ -5,7 +5,7 @@ using namespace std;
  
 
 
-int MyFloorResult(float number) {
+int MyCeilResult(float number) {
 
     if (number > 0) {
         return int(number);
@@ -32,11 +32,11 @@ int main() {
     float number = ReadNumber();
   
    
-    cout << "My Floor Resut : " << MyFloorResult(number);
+    cout << "My ceil Resut : " << MyCeilResult(number);
 
    // PrintArray(arrSource, Sourcelength);
 
-    cout << "\nC++ Floor Result: " << floor(number);
+    cout << "\nC++ ceil Result: " << ceil(number);
 
 
     cout << endl;
