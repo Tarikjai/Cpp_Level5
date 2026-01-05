@@ -50,15 +50,15 @@ string Tabs(short NumberOfTabs) {
 }
 
 
-void ShowFinalGameResults() {
+void ShowFinalGameResults(int& playerWin, int& computerWin, int& Draw) {
 
 
-   // cout << "\nGame Rounds      : "  << GameResults.GameRounds <<  "\n";
-  /*  cout << "Player 1 won times : "  <<  << "\n";
-    cout << "Computer won times : "  << GameResults.ComputerWontimes <<"\n";
-    cout << "Draw times         : "  << GameResults.DrawTimes << "\n";
+  
+    cout << "Player 1 won times : "  << Draw << "\n";
+    cout << "Computer won times : "  << computerWin <<"\n";
+    cout << "Draw times         : "  << Draw << "\n";
     cout << "Final Winer        :  " << "\n";
-*/
+
 
 }
 
@@ -109,7 +109,7 @@ void PlayRound(int& playerWin, int& computerWin, int& Draw) {
         system("color 4F");
         computerWin++; 
     }
-    else {
+    else if (CheckRoundResult(NumberOfTabs, Computer) == "[Player win]") {
         system("color A0");
         playerWin++;
     }
@@ -133,11 +133,11 @@ void StartGame() {
         for (int i = 0; i < RNumber; i++) {
             cout << "\nRound [" << ++counter << "] begins:\n";
             PlayRound( playerWin,  computerWin, Draw);
-
+            
             
         }
         
-
+        
         GameOn =false;
 
     } while (GameOn == true);
@@ -145,8 +145,8 @@ void StartGame() {
     
   
     ShowGameOverScreen(RNumber);
-       
-
+    cout << endl;
+    ShowFinalGameResults(playerWin, computerWin, Draw);
 }
 
 
