@@ -3,19 +3,6 @@ using namespace std;
 
 enum enChoices { Stone = 1, Paper = 2, Scissors = 3 };
 
-struct stGameResults { 
-    int Player1wontimes = 0;
-    int ComputerWontimes = 0;
-    int DrawTimes = 0;
-};
-
-struct stChoices {
-    int PlayerChoice;
-    int ComputerChoice ;
-    string RoundWinner;
-   };
-
-
 
 int RandomNumber(int From, int To) {
     int RandomNumber = rand() % (To - From + 1) + From;
@@ -24,13 +11,9 @@ int RandomNumber(int From, int To) {
 
 void ShowGameOverScreen(int RNumber) {
     string restart;
-    cout << "-------------------------------------------------------\n";
-    cout << "\n\t\t+++ G a m e    O v e r +++\n";
-    cout << "\n-------------------------------------------------------\n";
-    cout << "\nGame Rounds      : " << RNumber << "\n";
-    cout << "Do you want to play again? Y/N?";
-    
-
+    cout << "\n\t\t---------------------------------------------------------";
+    cout << "\n\t\t\t\t+++ G a m e    O v e r +++";
+    cout << "\n\t\t_________________________________________________________\n";
     
 }
 
@@ -51,14 +34,16 @@ string Tabs(short NumberOfTabs) {
 
 
 void ShowFinalGameResults(int& playerWin, int& computerWin, int& Draw) {
-
-
-  
-    cout << "Player 1 won times : "  << Draw << "\n";
-    cout << "Computer won times : "  << computerWin <<"\n";
-    cout << "Draw times         : "  << Draw << "\n";
-    cout << "Final Winer        :  " << "\n";
-
+    cout << "\t\t____________________ [ Game Results ] ___________________"  << "\n" << endl;
+    cout << "\t\tGame Round         : " << Draw << "\n";
+    cout << "\t\tPlayer 1 won times : "  << Draw << "\n";
+    cout << "\t\tComputer won times : "  << computerWin <<"\n";
+    cout << "\t\tDraw times         : "  << Draw << "\n";
+    cout << "\t\tFinal Winer        : " << "\n";
+    cout << "\n\t\t_________________________________________________________\n";
+    cout << endl;
+    cout << "\t\t" << "Do you want to play again? Y/N?";
+    cout << endl;
 
 }
 
