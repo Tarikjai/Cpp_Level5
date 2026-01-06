@@ -35,7 +35,7 @@ string Tabs(short NumberOfTabs) {
 
 void ShowFinalGameResults(int& playerWin, int& computerWin, int& Draw) {
     cout << "\t\t____________________ [ Game Results ] ___________________"  << "\n" << endl;
-    cout << "\t\tGame Round         : " << Draw << "\n";
+    cout << "\t\tGame Round         : " << "x" << "\n";
     cout << "\t\tPlayer 1 won times : "  << Draw << "\n";
     cout << "\t\tComputer won times : "  << computerWin <<"\n";
     cout << "\t\tDraw times         : "  << Draw << "\n";
