@@ -74,13 +74,10 @@ string CheckRoundResult(int NumberOfTabs, int Computer) {
 
 void PlayRound(int& playerWin, int& computerWin, int& Draw) {
     int NumberOfTabs, Computer;
-     
+    Computer = RandomNumber(1, 3);
     cout << "\nYour Choice: [1]: Stone, [2]: Papper, [3]: Sissors ? \n";
     cin >> NumberOfTabs;
-
-
-    Computer = RandomNumber(1, 3);
-    
+ 
     cout << "\nPlayer1 Choice   : " << Tabs(NumberOfTabs) << endl;
     cout << "Computer Choice  : " << Tabs(Computer) << endl;
     cout << "Round Winner     : "<< CheckRoundResult(NumberOfTabs, Computer);
@@ -115,7 +112,7 @@ void StartGame() {
       
         
         
-        for (int i = 0; i < RNumber; i++) {
+        for (int i = 1; i <= RNumber; i++) {
             cout << "\nRound [" << ++counter << "] begins:\n";
             PlayRound( playerWin,  computerWin, Draw);
             
