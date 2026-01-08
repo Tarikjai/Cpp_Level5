@@ -1,4 +1,5 @@
 #include <iostream>  
+#include <conio.h>
 using namespace std;
 
 enum enChoices { Stone = 1, Paper = 2, Scissors = 3 };
@@ -28,32 +29,56 @@ int RandomNumber(int From, int To) {
     return RandomNumber;
 }
 
+string CheckRoundResult(int NumberOfTabs, int Computer) {
+    if (NumberOfTabs == Computer) {
+        return "[No Winner]";
+    }
+    else if (NumberOfTabs == 1 && Computer == 2 || NumberOfTabs == 2 && Computer == 3 || NumberOfTabs == 3 && Computer == 1) {
+        return "[Computer win]";
+    }
+    else {
+        return "[Player win]";
+    }
+}
 
-
+string checkWinner(StResult& result) {
+    if (result.PlayerWin > result.computerWin) {
+        return "Player Win";
+    }
+    else if (result.PlayerWin < result.computerWin) {
+        return "Computer";
+    }
+    else
+        return "No Winner";
+}
 
 void ShowGameOverScreen(int RNumber) {
    
     cout << "\n\t\t---------------------------------------------------------";
     cout << "\n\t\t\t\t+++ G a m e    O v e r +++";
     cout << "\n\t\t_________________________________________________________\n";
-    
+    cout << "\t\t____________________ [ Game Results ] ___________________" << "\n" ;
+    cout << "\t\tGame Round         : " << RNumber << "\n";
 }
 
  
 
 void ShowFinalGameResults(StResult& result) {
-    cout << "\t\t____________________ [ Game Results ] ___________________"  << "\n" << endl;
-    cout << "\t\tGame Round         : " << "x" << "\n";
+  
     cout << "\t\tPlayer 1 won times : "  << result.PlayerWin << "\n";
     cout << "\t\tComputer won times : "  << result.computerWin <<"\n";
     cout << "\t\tDraw times         : "  << result.Draw << "\n";
-    cout << "\t\tFinal Winer        : " << "\n";
+    cout << "\t\tFinal Winer        : " << checkWinner(result)  <<"\n";
     cout << "\n\t\t_________________________________________________________\n";
     cout << endl;
     cout << "\t\t" << "Do you want to play again? Y/N?";
-    cout << endl;
 
+   
 }
+
+
+
+
 
 short ReadHowManyRounds() {
     int RoundNuber;
@@ -65,17 +90,6 @@ short ReadHowManyRounds() {
 void ResetScreen(){
 }
 
-string CheckRoundResult(int NumberOfTabs, int Computer) {
-    if (NumberOfTabs == Computer) {
-      return "[No Winner]";
-    }
-    else if (NumberOfTabs == 1 && Computer == 2 || NumberOfTabs == 2 && Computer == 3 || NumberOfTabs == 3 && Computer == 1) {
-        return "[Computer win]";
-    }    
-    else {
-        return "[Player win]";
-    }
-}
 
 
 
@@ -97,6 +111,7 @@ void PlayRound(StResult& result) {
 
     }
     else if (CheckRoundResult(NumberOfTabs, Computer) == "[Computer win]") {
+        cout << '\a';
         system("color 4F");
         result.computerWin++; 
     }
@@ -111,35 +126,34 @@ void PlayRound(StResult& result) {
 
 
 void StartGame() {
-   
-
+    string PlayAgain;
     short RNumber = ReadHowManyRounds();
     int counter = 0;
-
+    
     StResult result;
     
     bool GameOn = true;
     do {
-      
-        
-        
         for (int i = 1; i <= RNumber; i++) {
             cout << "\nRound [" << ++counter << "] begins:\n";
             PlayRound(result);
-            
-            
         }
-        
-        
         GameOn =false;
-
     } while (GameOn == true);
 
-    
-  
     ShowGameOverScreen(RNumber);
-    cout << endl;
     ShowFinalGameResults(result);
+
+    cin >> PlayAgain;
+    if (PlayAgain == "Y") {
+        system("cls");
+        system("color 07");
+        StartGame();
+    }
+    cout << endl;
+
+
+
 }
 
 
