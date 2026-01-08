@@ -3,21 +3,12 @@ using namespace std;
 
 enum enChoices { Stone = 1, Paper = 2, Scissors = 3 };
 
-
-int RandomNumber(int From, int To) {
-    int RandomNumber = rand() % (To - From + 1) + From;
-    return RandomNumber;
-}
-
-void ShowGameOverScreen(int RNumber) {
-    string restart;
-    cout << "\n\t\t---------------------------------------------------------";
-    cout << "\n\t\t\t\t+++ G a m e    O v e r +++";
-    cout << "\n\t\t_________________________________________________________\n";
-    
-}
-
- 
+struct StResult {
+    int PlayerWin=0;
+    int computerWin=0;
+    int Draw=0;
+  
+};
 string Tabs(short NumberOfTabs) {
     switch (NumberOfTabs) {
     case 1:
@@ -32,13 +23,30 @@ string Tabs(short NumberOfTabs) {
     }
 }
 
+int RandomNumber(int From, int To) {
+    int RandomNumber = rand() % (To - From + 1) + From;
+    return RandomNumber;
+}
 
-void ShowFinalGameResults(int& playerWin, int& computerWin, int& Draw) {
+
+
+
+void ShowGameOverScreen(int RNumber) {
+   
+    cout << "\n\t\t---------------------------------------------------------";
+    cout << "\n\t\t\t\t+++ G a m e    O v e r +++";
+    cout << "\n\t\t_________________________________________________________\n";
+    
+}
+
+ 
+
+void ShowFinalGameResults(StResult& result) {
     cout << "\t\t____________________ [ Game Results ] ___________________"  << "\n" << endl;
     cout << "\t\tGame Round         : " << "x" << "\n";
-    cout << "\t\tPlayer 1 won times : "  << Draw << "\n";
-    cout << "\t\tComputer won times : "  << computerWin <<"\n";
-    cout << "\t\tDraw times         : "  << Draw << "\n";
+    cout << "\t\tPlayer 1 won times : "  << result.PlayerWin << "\n";
+    cout << "\t\tComputer won times : "  << result.computerWin <<"\n";
+    cout << "\t\tDraw times         : "  << result.Draw << "\n";
     cout << "\t\tFinal Winer        : " << "\n";
     cout << "\n\t\t_________________________________________________________\n";
     cout << endl;
@@ -60,21 +68,22 @@ void ResetScreen(){
 string CheckRoundResult(int NumberOfTabs, int Computer) {
     if (NumberOfTabs == Computer) {
       return "[No Winner]";
-      //  system("color E0");
     }
     else if (NumberOfTabs == 1 && Computer == 2 || NumberOfTabs == 2 && Computer == 3 || NumberOfTabs == 3 && Computer == 1) {
         return "[Computer win]";
-    //    system("color 4F");
     }    
     else {
-    //    system("color A0");
         return "[Player win]";
     }
 }
 
-void PlayRound(int& playerWin, int& computerWin, int& Draw) {
+
+
+
+void PlayRound(StResult& result) {
     int NumberOfTabs, Computer;
     Computer = RandomNumber(1, 3);
+
     cout << "\nYour Choice: [1]: Stone, [2]: Papper, [3]: Sissors ? \n";
     cin >> NumberOfTabs;
  
@@ -84,16 +93,16 @@ void PlayRound(int& playerWin, int& computerWin, int& Draw) {
 
     if (CheckRoundResult(NumberOfTabs, Computer) == "[No Winner]") {
         system("color E0");
-        Draw++;
+        result.Draw++;
 
     }
     else if (CheckRoundResult(NumberOfTabs, Computer) == "[Computer win]") {
         system("color 4F");
-        computerWin++; 
+        result.computerWin++; 
     }
     else if (CheckRoundResult(NumberOfTabs, Computer) == "[Player win]") {
         system("color A0");
-        playerWin++;
+        result.PlayerWin++;
     }
 
     cout << "\n______________________________________________\n";
@@ -102,19 +111,21 @@ void PlayRound(int& playerWin, int& computerWin, int& Draw) {
 
 
 void StartGame() {
-    bool GameOn = true;
+   
 
     short RNumber = ReadHowManyRounds();
-    int counter = 0 , playerWin = 0, computerWin = 0, Draw = 0;
-    
+    int counter = 0;
 
+    StResult result;
+    
+    bool GameOn = true;
     do {
       
         
         
         for (int i = 1; i <= RNumber; i++) {
             cout << "\nRound [" << ++counter << "] begins:\n";
-            PlayRound( playerWin,  computerWin, Draw);
+            PlayRound(result);
             
             
         }
@@ -128,7 +139,7 @@ void StartGame() {
   
     ShowGameOverScreen(RNumber);
     cout << endl;
-    ShowFinalGameResults(playerWin, computerWin, Draw);
+    ShowFinalGameResults(result);
 }
 
 
