@@ -25,7 +25,6 @@ stGameResult playGame() {
 
 
 
-
 void startGame(stGameResult GameResutl) {
 
 	string PlayGame = "Y";
