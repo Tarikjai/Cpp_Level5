@@ -19,7 +19,6 @@ string Tab(short Numbert) {
 stGameResult playGame() {
 
 
-
 }
 
 
