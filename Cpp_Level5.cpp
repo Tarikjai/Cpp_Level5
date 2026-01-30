@@ -24,8 +24,44 @@ struct stGameResult {
 	string WinnerName = "";
 };
 
+string Tabs(short Number) {
+	string t = "\t";
+	for (int i = 0; i <= Number; i++) {
+		t = t + t;
+	}
+	return t;
+}
+
+short HowManyRound() {
+	short RoundNumber = 0;
+	do {
+		cout << "How Many Rounds"
+	} while (RoundNumber < 0 || RoundNumber> 10);
+
+	return RoundNumber
+}
+stGameResult playgame(enGameChoice choice) {
+
+	short PlayerWin = 0, ComputerWin = 0, Draw = 0;
+
+	for (int round =0 ,  )
+
+}
+
+
+
+
 
 stGameResult StartGame() {
+	string playGame = "Y";
+	do {
+
+		stGameResult gameResult = playgame();
+
+		cout << "Do you want to play again? Y/N";
+		cin >> playGame;
+	} while (playGame == "Y" || playGame == "y");
+
 
 }
 
