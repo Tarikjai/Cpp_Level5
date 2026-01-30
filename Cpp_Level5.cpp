@@ -70,8 +70,6 @@ stGameResult playgame(short RoundNUmber) {
 
 
 
-
-
 stGameResult StartGame() {
 	string playGame = "Y";
 	do {
@@ -82,7 +80,7 @@ stGameResult StartGame() {
 		cin >> playGame;
 	} while (playGame == "Y" || playGame == "y");
 
-	return gameResult;
+	return ;
 }
 
 
