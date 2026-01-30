@@ -24,6 +24,16 @@ struct stGameResult {
 	string WinnerName = "";
 };
 
+void clear() {
+	system("cls");
+	system("color 0F");
+}
+
+int RandomNumber(int From, int To) {
+	int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
+	return RandomNumber;
+}
+
 string Tabs(short Number) {
 	string t = "\t";
 	for (int i = 0; i <= Number; i++) {
@@ -32,19 +42,29 @@ string Tabs(short Number) {
 	return t;
 }
 
+
+
 short HowManyRound() {
 	short RoundNumber = 0;
 	do {
-		cout << "How Many Rounds"
+		cout << "How Many Rounds 1 to 10 ? \n";
+		cin >> RoundNumber;
 	} while (RoundNumber < 0 || RoundNumber> 10);
 
-	return RoundNumber
+	return RoundNumber;
 }
-stGameResult playgame(enGameChoice choice) {
+
+
+stGameResult playgame(short RoundNUmber) {
+	stGameResult  GameResult;
 
 	short PlayerWin = 0, ComputerWin = 0, Draw = 0;
 
-	for (int round =0 ,  )
+	for (int round = 0; round <= RoundNUmber; round++) {
+
+	}
+
+	return GameResult;
 
 }
 
@@ -55,14 +75,14 @@ stGameResult playgame(enGameChoice choice) {
 stGameResult StartGame() {
 	string playGame = "Y";
 	do {
-
-		stGameResult gameResult = playgame();
+		clear();
+		stGameResult gameResult = playgame(HowManyRound());
 
 		cout << "Do you want to play again? Y/N";
 		cin >> playGame;
 	} while (playGame == "Y" || playGame == "y");
 
-
+	return gameResult;
 }
 
 
