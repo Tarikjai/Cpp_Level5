@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-enum enGameChoice { Stone = 1, Papper = 2, Sicssors = 3 };
+enum enGameChoice { Stone = 1, Paper = 2, Scissor = 3 };
 enum enWinner {Player=1, Computer=2, Draw=3};
 
 struct stRoundinfo {
@@ -42,6 +42,25 @@ string Tabs(short Number) {
 	return t;
 }
 
+enGameChoice PlayerChoice() {
+	short playerChoice = 0;
+	do {
+		cout << "Your Choice: [1]:Stone, [2]:¨Paper, [3]:Scissors ? ";
+		cin >> playerChoice;
+	} while (playerChoice < 1 || playerChoice>3);
+	return (enGameChoice)playerChoice;
+}
+
+enGameChoice ComputerChoice() {
+	return enGameChoice(RandomNumber(1, 3));
+}
+
+string ChoiceName(enGameChoice choice) {
+	string arr[3] = {"Stone", "Paper", "Scissor"};
+	return arr[choice-1];
+}
+
+ 
 
 
 short HowManyRound() {
@@ -56,12 +75,12 @@ short HowManyRound() {
 
 
 stGameResult playgame(short RoundNUmber) {
-	stGameResult  GameResult;
-
+	stRoundinfo  RoundInfo;
 	short PlayerWin = 0, ComputerWin = 0, Draw = 0;
 
-	for (int round = 0; round <= RoundNUmber; round++) {
-
+	for (int round = 1; round <= RoundNUmber; round++) {
+		RoundInfo.Round = round;
+		RoundInfo.PlayerChoice =
 	}
 
 	return GameResult;
