@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+
 enum enQuestionLeve { Easy=1, Medium=2, Hard=3, MixLevel=4};
 enum operationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 
@@ -38,13 +39,12 @@ short HowManyQuestion() {
 	return QuestionNumber;
 }
 
-
-void PrintFinalResultScreen() {
-	cout << "_______________________________________________________\n";
-	cout << "               Final Result is \n";
-	cout << "_______________________________________________________\n";
-}
-
+/*
+operationType Operation() {
+	int Result = 0;
+	switch (c)
+	RandomNumber(1, 100) ; 
+}*/
 
 stGameResult PlayGame(short HowManyQuestion) {
 	stRoundInfo RoundInfo;
@@ -54,7 +54,9 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
+		cout << "Question [" << Question << "/" << HowManyQuestion << "]\n";
 
+		cout << "_________\n";
 	}
 
 }
@@ -71,6 +73,12 @@ stGameResult StartGame() {
 	} while (playGame == "Y" || playGame == "y");
 }
 
+
+void PrintFinalResultScreen() {
+	cout << "_______________________________________________________\n";
+	cout << "               Final Result is \n";
+	cout << "_______________________________________________________\n";
+}
 
 
 
