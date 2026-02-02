@@ -29,7 +29,6 @@ int RandomNumber(int From, int To) {
 	return RandomNumber;
 }
 
-
 short HowManyQuestion() {
 	short QuestionNumber = 0;
 	do {
