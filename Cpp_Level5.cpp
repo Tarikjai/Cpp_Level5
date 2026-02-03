@@ -53,7 +53,7 @@ enQuestionLevel level() {
 operationType Operation() {
 	short Operation;
 	do {
-		cout << "Enter Questions Level [1] Easy, [2] Medium, [3] Hard, [4] Mix ? ";
+		cout << "Enter Operation Type [1] Add, [2] Dub, [3] Mul, [4] Div, [5] Mix  ? ";
 		cin >> Operation;
 	} while (Operation < 1 || Operation >4);
 	return (operationType)Operation;
