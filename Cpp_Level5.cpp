@@ -42,9 +42,21 @@ short HowManyQuestion() {
 }
 
 enQuestionLevel level() {
+	short level;
 	do {
+		cout << "Enter Questions Level [1] Easy, [2] Medium, [3] Hard, [4] Mix ? ";
+		cin >> level;
+	} while (level < 1 || level >4);
+	return (enQuestionLevel)level;
+}
 
-	} 
+operationType Operation() {
+	short level;
+	do {
+		cout << "Enter Questions Level [1] Easy, [2] Medium, [3] Hard, [4] Mix ? ";
+		cin >> level;
+	} while (level < 1 || level >4);
+	return (enQuestionLevel)level;
 }
 
 /*
