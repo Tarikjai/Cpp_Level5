@@ -4,7 +4,7 @@
 using namespace std;
 
 
-enum enQuestionLeve { Easy=1, Medium=2, Hard=3, MixLevel=4};
+enum enQuestionLevel { Easy=1, Medium=2, Hard=3, MixLevel=4};
 enum operationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 
 
@@ -24,10 +24,13 @@ void clear() {
 	system("cls");
 	system("System 0F");
 }
+
 int RandomNumber(int From, int To) {
 	int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
 	return RandomNumber;
 }
+
+
 
 short HowManyQuestion() {
 	short QuestionNumber = 0;
@@ -36,6 +39,12 @@ short HowManyQuestion() {
 		cin >> QuestionNumber;
 	} while (QuestionNumber < 1 || QuestionNumber >9);
 	return QuestionNumber;
+}
+
+enQuestionLevel level() {
+	do {
+
+	} 
 }
 
 /*

@@ -1,2 +1,3 @@
 ﻿  Cpp_Level5.cpp
-C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(55,1): error C4716: 'PlayGame': must return a value
+C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(73,1): error C4716: 'StartGame': must return a value
+C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(61,1): error C4716: 'PlayGame': must return a value
