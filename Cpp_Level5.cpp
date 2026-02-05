@@ -12,6 +12,8 @@ struct stRoundInfo {
 	short QuestionNumber = 0;
 	string QuestionLevel = "";
 	string OperationType = "";
+	short Num1 = 0;
+	short Num2 = 0;
 };
 
 struct stGameResult {
@@ -57,16 +59,17 @@ operationType Operation() {
 	return (operationType)Operation;
 }
 
-/*
-operationType Operation() {
-	int Result = 0;
-	switch (c)
-	RandomNumber(1, 100) ; 
-}*/
+ 
+short Operation(short Num1, short Num2) {
+	return Num1 + Num2;
+
+}
 
 stGameResult PlayGame(short HowManyQuestion) {
 	stRoundInfo RoundInfo;
 
+	RoundInfo.QuestionLevel = level();
+	RoundInfo.OperationType = Operation();
 
 	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0;
 
@@ -74,23 +77,32 @@ stGameResult PlayGame(short HowManyQuestion) {
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
 		cout << "Question [" << Question << "/" << HowManyQuestion << "]\n";
 
+
+		RoundInfo.Num1 = RandomNumber( 1,100);
+		RoundInfo.Num2 = RandomNumber(1, 100);
+		cout << Operation(RoundInfo.Num1, RoundInfo.Num2);
 		cout << "_________\n";
 	}
 
 }
 
+stGameResult FillResult() {
+
+}
 
 stGameResult StartGame() {
 	string playGame = "Y";
 	do {
 		clear();
 		stGameResult  GameResult = PlayGame(HowManyQuestion());
-	
-		cout  << "Do you want to play again? Y/N";
+
+		cout << "Do you want to play again? Y/N";
 		cin >> playGame;
 	} while (playGame == "Y" || playGame == "y");
-}
 
+	return FillResult();
+
+}
 
 void PrintFinalResultScreen() {
 	cout << "_______________________________________________________\n";
