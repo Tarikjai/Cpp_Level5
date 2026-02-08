@@ -7,7 +7,6 @@ using namespace std;
 enum enQuestionLevel { Easy=1, Medium=2, Hard=3, MixLevel=4};
 enum operationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 
-
 struct stRoundInfo {
 	short QuestionNumber = 0;
 	string QuestionLevel = "";
