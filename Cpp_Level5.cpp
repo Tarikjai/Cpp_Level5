@@ -82,7 +82,6 @@ void PrintFinalResult(stGameResult GameResult) {
 
 }
 
-
 stGameResult PlayGame(short HowManyQuestion) {
 	stRoundInfo RoundInfo;
 
