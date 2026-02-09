@@ -22,7 +22,7 @@ struct stGameResult {
 
 void clear() {
 	system("cls");
-	system("System 0F");
+	system("color  0F");
 }
 
 int RandomNumber(int From, int To) {
@@ -63,13 +63,22 @@ short Operation(short Num1, short Num2) {
 
 }
 
-stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers) {
+stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion) {
 	stGameResult GameResult;
+	GameResult.NumberOfQuestions = HowManyQuestion;
 	GameResult.NbrCorrectAnswers = NbrCorrectAnswers;
 	GameResult.NbrWrongAnswers = NbrWrongAnswers;
+	return GameResult;
 }
 
-void PrintFinalResult() {
+void PrintFinalResult(stGameResult GameResult) {
+	cout << "\n----------------------------------------------------------\n";
+	cout << "\nNumber Of Question:" << GameResult.NumberOfQuestions  << "\n";
+	cout << "Questions Level: " << "\n";
+	cout << "Op Type :" << "\n";
+	cout << "Number of Right Answers :" << GameResult.NbrCorrectAnswers << "\n";
+	cout << "Number of Wrong Answers :" << GameResult.NbrWrongAnswers << "\n";
+	cout << "\n----------------------------------------------------------\n";
 
 }
 
@@ -84,7 +93,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
-		cout << "Question [" << Question << "/" << HowManyQuestion << "]\n";
+		cout << "\n\nQuestion [" << Question << "/" << HowManyQuestion << "]\n\n";
 
 
 		RoundInfo.Num1 = RandomNumber(1, 100);
@@ -92,43 +101,38 @@ stGameResult PlayGame(short HowManyQuestion) {
 		result = Operation(RoundInfo.Num1, RoundInfo.Num2);
 
 		cout << RoundInfo.Num1 << "\n";
-		cout << RoundInfo.Num2 << "+" <<"\n";
+		cout << RoundInfo.Num2 << " +" <<"\n";
 		cout << "------------\n";
 			
 		
 		cin >> answer;
 		if (answer == result) {
 			NbrCorrectAnswers++;
-			cout << "Right Answer :-)";
+			cout << "Right Answer :-)\n";
 		}
 		else {
 			NbrWrongAnswers++;
-			cout << "Wrong Answer :-)";
+			cout << "Wrong Answer :-)\n";
 		}
 	}
-	fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers);
+	return fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers, HowManyQuestion);
 }
 
 
 
-stGameResult StartGame() {
+void StartGame() {
 	string playGame = "Y";
 	do {
 		clear();
 		stGameResult  GameResult = PlayGame(HowManyQuestion());
+		PrintFinalResult(GameResult);
 
-		cout << "Do you want to play again? Y/N";
+		cout << "\nDo you want to play again? Y/N";
 		cin >> playGame;
 	} while (playGame == "Y" || playGame == "y");
 
-	return FillResult();
+	 
 
-}
-
-void PrintFinalResultScreen() {
-	cout << "_______________________________________________________\n";
-	cout << "               Final Result is \n";
-	cout << "_______________________________________________________\n";
 }
 
 
