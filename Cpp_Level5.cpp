@@ -90,7 +90,6 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
 
-
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
 		cout << "\n\nQuestion [" << Question << "/" << HowManyQuestion << "]\n\n";
 
