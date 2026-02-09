@@ -63,30 +63,53 @@ short Operation(short Num1, short Num2) {
 
 }
 
+stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers) {
+	stGameResult GameResult;
+	GameResult.NbrCorrectAnswers = NbrCorrectAnswers;
+	GameResult.NbrWrongAnswers = NbrWrongAnswers;
+}
+
+void PrintFinalResult() {
+
+}
+
+
 stGameResult PlayGame(short HowManyQuestion) {
 	stRoundInfo RoundInfo;
 
 	RoundInfo.QuestionLevel = level();
 	RoundInfo.OperationType = Operation();
 
-	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0;
+	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
 
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
 		cout << "Question [" << Question << "/" << HowManyQuestion << "]\n";
 
 
-		RoundInfo.Num1 = RandomNumber( 1,100);
+		RoundInfo.Num1 = RandomNumber(1, 100);
 		RoundInfo.Num2 = RandomNumber(1, 100);
-		cout << Operation(RoundInfo.Num1, RoundInfo.Num2);
-		cout << "_________\n";
+		result = Operation(RoundInfo.Num1, RoundInfo.Num2);
+
+		cout << RoundInfo.Num1 << "\n";
+		cout << RoundInfo.Num2 << "+" <<"\n";
+		cout << "------------\n";
+			
+		
+		cin >> answer;
+		if (answer == result) {
+			NbrCorrectAnswers++;
+			cout << "Right Answer :-)";
+		}
+		else {
+			NbrWrongAnswers++;
+			cout << "Wrong Answer :-)";
+		}
 	}
-
+	fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers);
 }
 
-stGameResult FillResult() {
 
-}
 
 stGameResult StartGame() {
 	string playGame = "Y";
