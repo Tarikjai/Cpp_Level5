@@ -78,7 +78,6 @@ void PrintFinalResult(stGameResult GameResult) {
 	cout << "Number of Right Answers :" << GameResult.NbrCorrectAnswers << "\n";
 	cout << "Number of Wrong Answers :" << GameResult.NbrWrongAnswers << "\n";
 	cout << "\n----------------------------------------------------------\n";
-
 }
 
 stGameResult PlayGame(short HowManyQuestion) {
@@ -91,7 +90,6 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
 		cout << "\n\nQuestion [" << Question << "/" << HowManyQuestion << "]\n\n";
-
 
 		RoundInfo.Num1 = RandomNumber(1, 100);
 		RoundInfo.Num2 = RandomNumber(1, 100);
@@ -114,7 +112,6 @@ stGameResult PlayGame(short HowManyQuestion) {
 	}
 	return fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers, HowManyQuestion);
 }
-
 
 
 void StartGame() {
