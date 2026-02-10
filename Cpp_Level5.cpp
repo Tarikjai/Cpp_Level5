@@ -60,7 +60,6 @@ operationType Operation() {
  
 short Operation(short Num1, short Num2) {
 	return Num1 + Num2;
-
 }
 
 stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion) {
