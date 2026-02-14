@@ -58,7 +58,7 @@ operationType Operation() {
 }
 
  
-short Operation(short Num1, short Num2, operationType OpType) {
+short Operation(short Num1, short Num2 /*, operationType OpType*/) {
 	return Num1 + Num2;
 }
 
@@ -111,6 +111,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 	}
 	return fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers, HowManyQuestion);
 }
+
 
 void StartGame() {
 	string playGame = "Y";
