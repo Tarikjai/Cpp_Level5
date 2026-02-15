@@ -88,11 +88,16 @@ operationType Operation() {
 	return (operationType)Operation;
 }
 
-string OperationSigne(short OperationSigne) {
+string OperationSign(short OperationSigne) {
 	string arr[4] = { "+", "-", "*", "/"};
 	return  arr[OperationSigne - 1];
 }
  
+string OperationSignName(short OperationSignName) {
+	string arr[5] = { "Add", "Sub", "Multiply", "Divide", "Mix" };
+	return  arr[OperationSignName - 1];
+}
+
 short  Operation(stRoundInfo RoundInfo) {
 	switch (RoundInfo.OperationType) {
 	case operationType::Add:
@@ -116,6 +121,7 @@ stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, sho
 	GameResult.NbrCorrectAnswers = NbrCorrectAnswers;
 	GameResult.NbrWrongAnswers = NbrWrongAnswers;
 	GameResult.LevelName = LevelName(RoundInfo.QuestionLevel);
+	GameResult.OpName = OperationSignName(RoundInfo.OperationType);
 	return GameResult;
 }
 
@@ -128,7 +134,7 @@ void PrintFinalResult(stGameResult GameResult) {
 	cout << "\n\n----------------------------------------------------------\n";
 	cout << "\nNumber Of Question:" << GameResult.NumberOfQuestions  << "\n";
 	cout << "Questions Level: " << GameResult.LevelName << "\n";
-	cout << "Op Type :" << "\n";
+	cout << "Op Type :" << GameResult.OpName << "\n";
 	cout << "Number of Right Answers :" << GameResult.NbrCorrectAnswers << "\n";
 	cout << "Number of Wrong Answers :" << GameResult.NbrWrongAnswers << "\n";
 	cout << "\n----------------------------------------------------------\n";
@@ -140,9 +146,8 @@ stGameResult PlayGame(short HowManyQuestion) {
 	RoundInfo.QuestionLevel = level();
 	RoundInfo.OperationType = Operation();
 
-
-
 	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
+
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
 		cout << "\n\nQuestion [" << Question << "/" << HowManyQuestion << "]\n\n";
@@ -152,7 +157,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 		result = Operation(RoundInfo);
 
 		cout << RoundInfo.Num1 << "\n";
-		cout << RoundInfo.Num2 << " " << OperationSigne(RoundInfo.OperationType) << "\n";
+		cout << RoundInfo.Num2 << " " << OperationSign(RoundInfo.OperationType) << "\n";
 
 		cout << "------------\n";
 		cout << result << "\n";
