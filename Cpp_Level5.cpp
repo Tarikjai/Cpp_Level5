@@ -58,8 +58,8 @@ operationType Operation() {
 }
 
  
-short Operation(short Num1, short Num2 /*, operationType OpType*/) {
-	return Num1 + Num2;
+short Operation(short Num1, short Num2 , enQuestionLevel QuestionLevel , operationType OpType ) {
+	return Num1 << OpType << Num2;
 }
 
 stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion) {
@@ -93,7 +93,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 		RoundInfo.Num1 = RandomNumber(1, 100);
 		RoundInfo.Num2 = RandomNumber(1, 100);
-		result = Operation(RoundInfo.Num1, RoundInfo.Num2);
+		result = Operation(RoundInfo.Num1, RoundInfo.Num2, RoundInfo.QuestionLevel, RoundInfo.OperationType);
 
 		cout << RoundInfo.Num1 << "\n";
 		cout << RoundInfo.Num2 << " +" <<"\n";
