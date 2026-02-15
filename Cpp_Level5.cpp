@@ -1,4 +1,4 @@
-  #include <iostream>  
+#include <iostream>  
 #include <conio.h>
 #include <string>
 using namespace std;
@@ -8,8 +8,8 @@ enum operationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 
 struct stRoundInfo {
 	short QuestionNumber = 0;
-	string QuestionLevel = "";
-	string OperationType = "";
+	short QuestionLevel = 0;
+	short OperationType = 0;
 	short Num1 = 0;
 	short Num2 = 0;
 };
@@ -18,7 +18,33 @@ struct stGameResult {
 	short NumberOfQuestions = 0;
 	short NbrCorrectAnswers = 0;
 	short NbrWrongAnswers = 0;
+	string LevelName = "";
+	string OpName = "";
 };
+
+void PrintColor(short correctAnswer, short WorngAnswer) {
+	if (correctAnswer > WorngAnswer) {
+		system("color  2F");
+	} 
+	else if (correctAnswer <  WorngAnswer) {
+		system("color  4F");
+	}
+	else {
+		system("color  0F");
+	}
+}
+
+string FinalResult(short correctAnswer, short WorngAnswer) {
+	if (correctAnswer > WorngAnswer) {
+		return "Pass :-)";
+	}
+	else if (correctAnswer < WorngAnswer) {
+		return "Fail :-(";
+	}
+	else {
+		return "No Winner";
+	}
+}
 
 void clear() {
 	system("cls");
@@ -48,35 +74,60 @@ enQuestionLevel level() {
 	return (enQuestionLevel)level;
 }
 
+string LevelName(short LevelName) {
+	string arr[4] = { "Easy", "Medium", "Hard", "Mix" };
+	return  arr[LevelName - 1];
+}
+
 operationType Operation() {
 	short Operation;
 	do {
 		cout << "Enter Operation Type [1] Add, [2] Dub, [3] Mul, [4] Div, [5] Mix  ? ";
 		cin >> Operation;
-	} while (Operation < 1 || Operation >4);
+	} while (Operation < 1 || Operation >5);
 	return (operationType)Operation;
 }
 
+string OperationSigne(short OperationSigne) {
+	string arr[4] = { "+", "-", "*", "/"};
+	return  arr[OperationSigne - 1];
+}
  
-short Operation( stRoundInfo RoundInfo) {
-	if (RoundInfo.OperationType == operationType::Add )
-
-	
-	return RoundInfo.Num1 + RoundInfo.Num2;
+short  Operation(stRoundInfo RoundInfo) {
+	switch (RoundInfo.OperationType) {
+	case operationType::Add:
+		return RoundInfo.Num1 + RoundInfo.Num2;
+		break;
+	case operationType::Sub:
+		return RoundInfo.Num1 - RoundInfo.Num2;
+		break;
+	case operationType::Mul:
+		return RoundInfo.Num1 * RoundInfo.Num2;
+		break;
+	case operationType::Div:
+		return RoundInfo.Num1 / RoundInfo.Num2;
+		break;
+	} 
 }
 
-stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion) {
+stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion, stRoundInfo RoundInfo) {
 	stGameResult GameResult;
 	GameResult.NumberOfQuestions = HowManyQuestion;
 	GameResult.NbrCorrectAnswers = NbrCorrectAnswers;
 	GameResult.NbrWrongAnswers = NbrWrongAnswers;
+	GameResult.LevelName = LevelName(RoundInfo.QuestionLevel);
 	return GameResult;
 }
 
 void PrintFinalResult(stGameResult GameResult) {
-	cout << "\n----------------------------------------------------------\n";
+
+	PrintColor(GameResult.NbrCorrectAnswers, GameResult.NbrWrongAnswers);
+
+	cout << "\n\n----------------------------------------------------------\n\n";
+	cout << "Final Result is " << FinalResult(GameResult.NbrCorrectAnswers, GameResult.NbrWrongAnswers);
+	cout << "\n\n----------------------------------------------------------\n";
 	cout << "\nNumber Of Question:" << GameResult.NumberOfQuestions  << "\n";
-	cout << "Questions Level: " << "\n";
+	cout << "Questions Level: " << GameResult.LevelName << "\n";
 	cout << "Op Type :" << "\n";
 	cout << "Number of Right Answers :" << GameResult.NbrCorrectAnswers << "\n";
 	cout << "Number of Wrong Answers :" << GameResult.NbrWrongAnswers << "\n";
@@ -89,6 +140,8 @@ stGameResult PlayGame(short HowManyQuestion) {
 	RoundInfo.QuestionLevel = level();
 	RoundInfo.OperationType = Operation();
 
+
+
 	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
@@ -99,22 +152,27 @@ stGameResult PlayGame(short HowManyQuestion) {
 		result = Operation(RoundInfo);
 
 		cout << RoundInfo.Num1 << "\n";
-		cout << RoundInfo.Num2 << " +" <<"\n";
+		cout << RoundInfo.Num2 << " " << OperationSigne(RoundInfo.OperationType) << "\n";
+
 		cout << "------------\n";
-			
+		cout << result << "\n";
+		cout << "------------\n";
 		cin >> answer;
+
 		if (answer == result) {
 			NbrCorrectAnswers++;
+			system("color  2F");
 			cout << "Right Answer :-)\n";
 		}
 		else {
 			NbrWrongAnswers++;
-			cout << "Wrong Answer :-)\n";
+			system("color  4F");
+			cout << "Wrong Answer :-(\n";
+			cout << "The right Answer is : " << result << "\n";
 		}
 	}
-	return fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers, HowManyQuestion);
+	return fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers, HowManyQuestion, RoundInfo);
 }
-
 
 void StartGame() {
 	string playGame = "Y";
@@ -123,14 +181,10 @@ void StartGame() {
 		stGameResult  GameResult = PlayGame(HowManyQuestion());
 		PrintFinalResult(GameResult);
 
-		cout << "\nDo you want to play again? Y/N";
+		cout << "\nDo you want to play again? Y/N: ";
 		cin >> playGame;
 	} while (playGame == "Y" || playGame == "y");
-
 }
-
-
-
 
 int main() {
 	srand((unsigned)time(NULL));
