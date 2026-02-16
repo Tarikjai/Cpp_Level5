@@ -79,6 +79,7 @@ string LevelName(short LevelName) {
 	return  arr[LevelName - 1];
 }
 
+
 operationType Operation() {
 	short Operation;
 	do {
