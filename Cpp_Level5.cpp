@@ -159,8 +159,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 		cout << RoundInfo.Num1 << "\n";
 		cout << RoundInfo.Num2 << " " << OperationSign(RoundInfo.OperationType) << "\n";
-
-		cout << "------------\n";
+				cout << "------------\n";
 		cout << result << "\n";
 		cout << "------------\n";
 		cin >> answer;
