@@ -86,7 +86,7 @@ string LevelName(short LevelName) {
 	return  arr[LevelName - 1];
 }
 
-operationType Operation() {
+operationType ChooseOperation() {
 	short Operation;
 	do {
 		cout << "Enter Operation Type [1] Add, [2] Dub, [3] Mul, [4] Div, [5] Mix  ? ";
@@ -105,6 +105,8 @@ string OperationSignName(short OperationSignName) {
 	return  arr[OperationSignName - 1];
 }
 
+ 
+
 short  Operation(stRoundInfo RoundInfo) {
 	switch (RoundInfo.OperationType) {
 	case operationType::Add:
@@ -119,8 +121,17 @@ short  Operation(stRoundInfo RoundInfo) {
 	case operationType::Div:
 		return RoundInfo.Num1 / RoundInfo.Num2;
 		break;
-	} 
+	
+	
 }
+}
+
+
+
+char Operator() {
+	char add = +;
+}
+
 
 stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion, stRoundInfo RoundInfo) {
 	stGameResult GameResult;
@@ -151,7 +162,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 	stRoundInfo RoundInfo;
 
 	RoundInfo.QuestionLevel = level();
-	RoundInfo.OperationType = Operation();
+	RoundInfo.OperationType = ChooseOperation();
 
 	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
 
