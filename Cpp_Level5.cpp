@@ -22,6 +22,13 @@ struct stGameResult {
 	string OpName = "";
 };
 
+/*
+RandomNumber(51, 100);
+RandomNumber(21, 50);
+RandomNumber(11, 20);
+RandomNumber(1, 10);
+*/
+
 void PrintColor(short correctAnswer, short WorngAnswer) {
 	if (correctAnswer > WorngAnswer) {
 		system("color  2F");
@@ -79,7 +86,6 @@ string LevelName(short LevelName) {
 	return  arr[LevelName - 1];
 }
 
-
 operationType Operation() {
 	short Operation;
 	do {
@@ -95,7 +101,7 @@ string OperationSign(short OperationSigne) {
 }
  
 string OperationSignName(short OperationSignName) {
-	string arr[5] = { "Add", "Sub", "Multiply", "Divide", "Mix" };
+	string arr[5] = { "+", "-", "*", "/", "Mix" };
 	return  arr[OperationSignName - 1];
 }
 
