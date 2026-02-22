@@ -122,8 +122,6 @@ short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
 		return RoundInfo.Num1 / RoundInfo.Num2;
 		break;
 	case operationType::MixOperation:
-
-		
 		 
 		if (MixOperation == 1) {
 			return RoundInfo.Num1 + RoundInfo.Num2;
@@ -176,7 +174,7 @@ stGameResult PlayGame(short HowManyQuestion) {
 	RoundInfo.QuestionLevel = level();
 	RoundInfo.OperationType = ChooseOperation();
 	
-	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0, MixOperation = RandomNumber(1, 4);
+	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
 
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
@@ -184,10 +182,21 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 		RoundInfo.Num1 = RandomNumber(1, 100);
 		RoundInfo.Num2 = RandomNumber(1, 100);
+
+		short MixOperation = RandomNumber(1, 4);
+
 		result = Operation(RoundInfo, MixOperation);
 
 		cout << RoundInfo.Num1 << "\n";
-		cout << RoundInfo.Num2 << " " << OperationSign(RoundInfo.OperationType) << "\n";
+		cout << RoundInfo.Num2 << "  " ;
+
+		if (RoundInfo.OperationType == 5) {
+			cout << OperationSign(MixOperation) << "\n";
+		}
+		else {
+			cout << OperationSign(RoundInfo.OperationType) << "\n";
+		}
+
 		cout << "------------\n";
 
 		
