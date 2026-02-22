@@ -89,14 +89,14 @@ string LevelName(short LevelName) {
 operationType ChooseOperation() {
 	short Operation;
 	do {
-		cout << "Enter Operation Type [1] Add, [2] Dub, [3] Mul, [4] Div, [5] Mix  ? ";
+		cout << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div, [5] Mix  ? ";
 		cin >> Operation;
 	} while (Operation < 1 || Operation >5);
 	return (operationType)Operation;
 }
 
 string OperationSign(short OperationSigne) {
-	string arr[4] = { "+", "-", "*", "/"};
+	string arr[5] = { "+", "-", "*", "/"," MIX "};
 	return  arr[OperationSigne - 1];
 }
  
@@ -107,7 +107,7 @@ string OperationSignName(short OperationSignName) {
 
  
 
-short  Operation(stRoundInfo RoundInfo) {
+short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
 	switch (RoundInfo.OperationType) {
 	case operationType::Add:
 		return RoundInfo.Num1 + RoundInfo.Num2;
@@ -121,16 +121,28 @@ short  Operation(stRoundInfo RoundInfo) {
 	case operationType::Div:
 		return RoundInfo.Num1 / RoundInfo.Num2;
 		break;
-	
-	
-}
+	case operationType::MixOperation:
+
+		
+		 
+		if (MixOperation == 1) {
+			return RoundInfo.Num1 + RoundInfo.Num2;
+		}
+		else if (MixOperation == 2) {
+			return RoundInfo.Num1 - RoundInfo.Num2;
+		}
+		else if (MixOperation == 3) {
+			return RoundInfo.Num1 * RoundInfo.Num2;
+		}
+		else if (MixOperation==  4) {
+			return RoundInfo.Num1 / RoundInfo.Num2;
+		}
+		}
 }
 
 
 
-char Operator() {
-	char add = +;
-}
+ 
 
 
 stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion, stRoundInfo RoundInfo) {
@@ -163,8 +175,8 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 	RoundInfo.QuestionLevel = level();
 	RoundInfo.OperationType = ChooseOperation();
-
-	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
+	
+	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0, MixOperation = RandomNumber(1, 4);
 
 
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
@@ -172,11 +184,13 @@ stGameResult PlayGame(short HowManyQuestion) {
 
 		RoundInfo.Num1 = RandomNumber(1, 100);
 		RoundInfo.Num2 = RandomNumber(1, 100);
-		result = Operation(RoundInfo);
+		result = Operation(RoundInfo, MixOperation);
 
 		cout << RoundInfo.Num1 << "\n";
 		cout << RoundInfo.Num2 << " " << OperationSign(RoundInfo.OperationType) << "\n";
-				cout << "------------\n";
+		cout << "------------\n";
+
+		
 		cout << result << "\n";
 		cout << "------------\n";
 		cin >> answer;
