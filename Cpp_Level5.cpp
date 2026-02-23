@@ -105,8 +105,6 @@ string OperationSignName(short OperationSignName) {
 	return  arr[OperationSignName - 1];
 }
 
- 
-
 short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
 	switch (RoundInfo.OperationType) {
 	case operationType::Add:
@@ -122,7 +120,6 @@ short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
 		return RoundInfo.Num1 / RoundInfo.Num2;
 		break;
 	case operationType::MixOperation:
-		 
 		if (MixOperation == 1) {
 			return RoundInfo.Num1 + RoundInfo.Num2;
 		}
@@ -138,6 +135,32 @@ short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
 		}
 }
 
+short LevelCheck(stRoundInfo RoundInfo, short MixLevel) {
+	  
+	switch (RoundInfo.QuestionLevel) {
+	case enQuestionLevel::Easy:
+		return  RandomNumber(1, 10);
+		break;
+	case enQuestionLevel::Medium:
+		return RandomNumber(11, 49);
+		break;
+	case enQuestionLevel::Hard:
+		return RandomNumber(50, 100);
+		break;
+	case enQuestionLevel::MixLevel:
+		if (MixLevel == 1) {
+			return  RandomNumber(1, 10);
+		}
+		else if (MixLevel == 2) {
+			return RandomNumber(11, 49);
+		}
+		else if (MixLevel == 3) {
+			return RandomNumber(50, 100);
+		}
+		 
+	}
+
+}
 
 
 stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion, stRoundInfo RoundInfo) {
@@ -177,10 +200,12 @@ stGameResult PlayGame(short HowManyQuestion) {
 	for (int Question = 1; Question <= HowManyQuestion; Question++) {
 		cout << "\n\nQuestion [" << Question << "/" << HowManyQuestion << "]\n\n";
 
-		RoundInfo.Num1 = RandomNumber(1, 100);
-		RoundInfo.Num2 = RandomNumber(1, 100);
-
 		short MixOperation = RandomNumber(1, 4);
+		short MixLevel = RandomNumber(1, 3);
+
+
+		RoundInfo.Num1 = LevelCheck(RoundInfo, MixLevel);
+		RoundInfo.Num2 = LevelCheck(RoundInfo, MixLevel);
 
 		result = Operation(RoundInfo, MixOperation);
 
