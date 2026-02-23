@@ -140,9 +140,6 @@ short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
 
 
 
- 
-
-
 stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion, stRoundInfo RoundInfo) {
 	stGameResult GameResult;
 	GameResult.NumberOfQuestions = HowManyQuestion;
