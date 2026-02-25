@@ -23,6 +23,7 @@ struct stGameResult {
 	string OpName = "";
 };
 
+
 /*
 RandomNumber(51, 100);
 RandomNumber(21, 50);
