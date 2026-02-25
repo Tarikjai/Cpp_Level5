@@ -14,6 +14,7 @@ struct stRoundInfo {
 	short Num2 = 0;
 };
 
+
 struct stGameResult {
 	short NumberOfQuestions = 0;
 	short NbrCorrectAnswers = 0;
