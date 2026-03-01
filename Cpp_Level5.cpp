@@ -4,22 +4,26 @@
 using namespace std;
 
 enum enQuestionLevel { Easy=1, Medium=2, Hard=3, MixLevel=4};
-enum operationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
+enum enoperationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 
-struct stRoundInfo {
-	short QuestionNumber = 0;
-	short QuestionLevel = 0;
-	short OperationType = 0;
-	short Num1 = 0;
-	short Num2 = 0;
+struct StQuestion {
+	int Num1 = 0;
+	int Num2 = 0;
+	int QuestionNumber=0 ;
+	enum enQuestionsLevel  QuestionLevel;
+	enum enoperationsType operationType;
+	 
+	bool Answer;
 };
 
-struct stGameResult {
+struct stQuizz {
+	StQuestion Question;
 	short NumberOfQuestions = 0;
+	enum enQuestionsLevel  QuestionsLevel;
+	enum enoperationsType operationsType;
 	short NbrCorrectAnswers = 0;
 	short NbrWrongAnswers = 0;
-	string LevelName = "";
-	string OpName = "";
+	bool FinalResult;
 };
 
 /*
@@ -53,7 +57,7 @@ string FinalResult(short correctAnswer, short WorngAnswer) {
 	}
 }
 
-void clear() {
+void clearScreen() {
 	system("cls");
 	system("color  0F");
 }
@@ -107,7 +111,7 @@ string OperationSignName(short OperationSignName) {
 
 
 
-void PrintMathGame() {
+void PLayMathGame() {
 
 }
 
@@ -131,8 +135,8 @@ void PrintFinalResult(stGameResult GameResult) {
 void StartGame() {
 	string playGame = "Y";
 	do {
-		clear();
-		PrintMathGame();
+		clearScreen();
+		PLayMathGame();
 
 		cout << "\nDo you want to play again? Y/N: ";
 		cin >> playGame;
