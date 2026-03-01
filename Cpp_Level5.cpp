@@ -105,73 +105,12 @@ string OperationSignName(short OperationSignName) {
 	return  arr[OperationSignName - 1];
 }
 
-short  Operation(stRoundInfo RoundInfo, short MixOperation ) {
-	switch (RoundInfo.OperationType) {
-	case operationType::Add:
-		return RoundInfo.Num1 + RoundInfo.Num2;
-		break;
-	case operationType::Sub:
-		return RoundInfo.Num1 - RoundInfo.Num2;
-		break;
-	case operationType::Mul:
-		return RoundInfo.Num1 * RoundInfo.Num2;
-		break;
-	case operationType::Div:
-		return RoundInfo.Num1 / RoundInfo.Num2;
-		break;
-	case operationType::MixOperation:
-		if (MixOperation == 1) {
-			return RoundInfo.Num1 + RoundInfo.Num2;
-		}
-		else if (MixOperation == 2) {
-			return RoundInfo.Num1 - RoundInfo.Num2;
-		}
-		else if (MixOperation == 3) {
-			return RoundInfo.Num1 * RoundInfo.Num2;
-		}
-		else if (MixOperation==  4) {
-			return RoundInfo.Num1 / RoundInfo.Num2;
-		}
-		}
-}
-
-short LevelCheck(stRoundInfo RoundInfo, short MixLevel) {
-	  
-	switch (RoundInfo.QuestionLevel) {
-	case enQuestionLevel::Easy:
-		return  RandomNumber(1, 10);
-		break;
-	case enQuestionLevel::Medium:
-		return RandomNumber(11, 49);
-		break;
-	case enQuestionLevel::Hard:
-		return RandomNumber(50, 100);
-		break;
-	case enQuestionLevel::MixLevel:
-		if (MixLevel == 1) {
-			return  RandomNumber(1, 10);
-		}
-		else if (MixLevel == 2) {
-			return RandomNumber(11, 49);
-		}
-		else if (MixLevel == 3) {
-			return RandomNumber(50, 100);
-		}
-		 
-	}
-
-}
 
 
-stGameResult fillFinalResult(short NbrCorrectAnswers, short NbrWrongAnswers, short HowManyQuestion, stRoundInfo RoundInfo) {
-	stGameResult GameResult;
-	GameResult.NumberOfQuestions = HowManyQuestion;
-	GameResult.NbrCorrectAnswers = NbrCorrectAnswers;
-	GameResult.NbrWrongAnswers = NbrWrongAnswers;
-	GameResult.LevelName = LevelName(RoundInfo.QuestionLevel);
-	GameResult.OpName = OperationSignName(RoundInfo.OperationType);
-	return GameResult;
-}
+
+
+
+
 
 void PrintFinalResult(stGameResult GameResult) {
 
