@@ -11,7 +11,7 @@ struct StQuestion {
 	int Num2 = 0;
 	int QuestionNumber=0 ;
 	enum enQuestionsLevel  QuestionLevel;
-	enum enoperationsType OperationType;
+	enum enOperationsType OperationType;
 	int CorrectAnswer = 0;
 	int WrongAnswer = 0;
 	bool Answer;
@@ -21,7 +21,7 @@ struct stQuiz {
 	StQuestion Question;
 	short NumberOfQuestions = 0;
 	enum enQuestionsLevel  QuestionsLevel;
-	enum enoperationsType OperationsType;
+	enum enOperationsType OperationsType;
 	short NbrCorrectAnswers = 0;
 	short NbrWrongAnswers = 0;
 	bool FinalResult;
@@ -118,6 +118,7 @@ void PLayMathGame() {
 	Quiz.NumberOfQuestions = HowManyQuestion();
 	Quiz.QuestionsLevel = QuestionsLevel();
 	Quiz.OperationsType = OperationType();
+
 
 
 }

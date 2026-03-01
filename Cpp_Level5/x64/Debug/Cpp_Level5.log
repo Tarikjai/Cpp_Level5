@@ -1,4 +1,2 @@
 ﻿  Cpp_Level5.cpp
-C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(164,1): warning C4715: 'LevelCheck': not all control paths return a value
-C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(137,1): warning C4715: 'Operation': not all control paths return a value
   Cpp_Level5.vcxproj -> C:\Users\Professional\Documents\C++\Cpp_Level5\x64\Debug\Cpp_Level5.exe
