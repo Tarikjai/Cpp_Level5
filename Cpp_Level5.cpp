@@ -111,7 +111,6 @@ string OperationSignName(short OperationSignName) {
 }
 
 
-
 void PLayMathGame() {
 	stQuiz Quiz;
 
