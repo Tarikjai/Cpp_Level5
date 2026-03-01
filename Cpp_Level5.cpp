@@ -107,11 +107,11 @@ string OperationSignName(short OperationSignName) {
 
 
 
+void PrintMathGame() {
 
+}
 
-
-
-
+/*
 void PrintFinalResult(stGameResult GameResult) {
 
 	PrintColor(GameResult.NbrCorrectAnswers, GameResult.NbrWrongAnswers);
@@ -126,66 +126,13 @@ void PrintFinalResult(stGameResult GameResult) {
 	cout << "Number of Wrong Answers :" << GameResult.NbrWrongAnswers << "\n";
 	cout << "\n----------------------------------------------------------\n";
 }
-
-stGameResult PlayGame(short HowManyQuestion) {
-	stRoundInfo RoundInfo;
-
-	RoundInfo.QuestionLevel = level();
-	RoundInfo.OperationType = ChooseOperation();
-	
-	short NbrCorrectAnswers = 0, NbrWrongAnswers = 0, answer=0, result=0;
-
-
-	for (int Question = 1; Question <= HowManyQuestion; Question++) {
-		cout << "\n\nQuestion [" << Question << "/" << HowManyQuestion << "]\n\n";
-
-		short MixOperation = RandomNumber(1, 4);
-		short MixLevel = RandomNumber(1, 3);
-
-
-		RoundInfo.Num1 = LevelCheck(RoundInfo, MixLevel);
-		RoundInfo.Num2 = LevelCheck(RoundInfo, MixLevel);
-
-		result = Operation(RoundInfo, MixOperation);
-
-		cout << RoundInfo.Num1 << "\n";
-		cout << RoundInfo.Num2 << "  " ;
-
-		if (RoundInfo.OperationType == 5) {
-			cout << OperationSign(MixOperation) << "\n";
-		}
-		else {
-			cout << OperationSign(RoundInfo.OperationType) << "\n";
-		}
-
-		cout << "------------\n";
-
-		
-		cout << result << "\n";
-		cout << "------------\n";
-		cin >> answer;
-
-		if (answer == result) {
-			NbrCorrectAnswers++;
-			system("color  2F");
-			cout << "Right Answer :-)\n";
-		}
-		else {
-			NbrWrongAnswers++;
-			system("color  4F");
-			cout << "Wrong Answer :-(\n";
-			cout << "The right Answer is : " << result << "\n";
-		}
-	}
-	return fillFinalResult(NbrCorrectAnswers, NbrWrongAnswers, HowManyQuestion, RoundInfo);
-}
+*/
 
 void StartGame() {
 	string playGame = "Y";
 	do {
 		clear();
-		stGameResult  GameResult = PlayGame(HowManyQuestion());
-		PrintFinalResult(GameResult);
+		PrintMathGame();
 
 		cout << "\nDo you want to play again? Y/N: ";
 		cin >> playGame;
