@@ -3,24 +3,25 @@
 #include <string>
 using namespace std;
 
-enum enQuestionLevel { Easy=1, Medium=2, Hard=3, MixLevel=4};
-enum enoperationType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
+enum enQuestionsLevel { Easy=1, Medium=2, Hard=3, MixLevel=4};
+enum enOperationsType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 
 struct StQuestion {
 	int Num1 = 0;
 	int Num2 = 0;
 	int QuestionNumber=0 ;
 	enum enQuestionsLevel  QuestionLevel;
-	enum enoperationsType operationType;
-	 
+	enum enoperationsType OperationType;
+	int CorrectAnswer = 0;
+	int WrongAnswer = 0;
 	bool Answer;
 };
 
-struct stQuizz {
+struct stQuiz {
 	StQuestion Question;
 	short NumberOfQuestions = 0;
 	enum enQuestionsLevel  QuestionsLevel;
-	enum enoperationsType operationsType;
+	enum enoperationsType OperationsType;
 	short NbrCorrectAnswers = 0;
 	short NbrWrongAnswers = 0;
 	bool FinalResult;
@@ -76,13 +77,13 @@ short HowManyQuestion() {
 	return QuestionNumber;
 }
 
-enQuestionLevel level() {
-	short level;
+enQuestionsLevel QuestionsLevel() {
+	short Operationlevel;
 	do {
 		cout << "Enter Questions Level [1] Easy, [2] Medium, [3] Hard, [4] Mix ? ";
-		cin >> level;
-	} while (level < 1 || level >4);
-	return (enQuestionLevel)level;
+		cin >> Operationlevel;
+	} while (Operationlevel < 1 || Operationlevel >4);
+	return (enQuestionsLevel)Operationlevel;
 }
 
 string LevelName(short LevelName) {
@@ -90,13 +91,13 @@ string LevelName(short LevelName) {
 	return  arr[LevelName - 1];
 }
 
-operationType ChooseOperation() {
-	short Operation;
+enOperationsType OperationType() {
+	short OperationType;
 	do {
 		cout << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div, [5] Mix  ? ";
-		cin >> Operation;
-	} while (Operation < 1 || Operation >5);
-	return (operationType)Operation;
+		cin >> OperationType;
+	} while (OperationType < 1 || OperationType >5);
+	return (enOperationsType)OperationType;
 }
 
 string OperationSign(short OperationSigne) {
@@ -112,6 +113,12 @@ string OperationSignName(short OperationSignName) {
 
 
 void PLayMathGame() {
+	stQuiz Quiz;
+
+	Quiz.NumberOfQuestions = HowManyQuestion();
+	Quiz.QuestionsLevel = QuestionsLevel();
+	Quiz.OperationsType = OperationType();
+
 
 }
 
