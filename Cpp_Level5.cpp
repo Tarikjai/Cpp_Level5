@@ -110,6 +110,9 @@ string OperationSignName(short OperationSignName) {
 	return  arr[OperationSignName - 1];
 }
 
+void FillQuestion(stQuiz Quiz) {
+
+}
 
 void PLayMathGame() {
 	stQuiz Quiz;
@@ -117,6 +120,8 @@ void PLayMathGame() {
 	Quiz.NumberOfQuestions = HowManyQuestion();
 	Quiz.QuestionsLevel = QuestionsLevel();
 	Quiz.OperationsType = OperationType();
+
+	FillQuestion(Quiz);
 
 }
 
