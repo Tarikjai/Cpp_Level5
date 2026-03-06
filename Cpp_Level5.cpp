@@ -118,8 +118,6 @@ void PLayMathGame() {
 	Quiz.QuestionsLevel = QuestionsLevel();
 	Quiz.OperationsType = OperationType();
 
-
-
 }
 
 /*
