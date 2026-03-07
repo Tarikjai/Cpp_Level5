@@ -115,11 +115,11 @@ StQuestion GenerateQuizQuestion() {
 
 }
 
-void GenerateQuizQuestions(stQuiz Quizz) {
+void GenerateQuizQuestions(stQuiz& Quizz) {
 	StQuestion QuestionList;
 
 	for (int QuestionNumber = 0; Quizz.NumberOfQuestions; QuestionNumber++) {
-		Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz.);
+		Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz);
 	}
 
 }
