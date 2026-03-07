@@ -9,22 +9,21 @@ enum enOperationsType { Add = 1, Sub = 2, Mul = 3, Div=4, MixOperation=5 };
 struct StQuestion {
 	int Num1 = 0;
 	int Num2 = 0;
-	int QuestionNumber=0 ;
-	enum enQuestionsLevel  QuestionLevel;
-	enum enOperationsType OperationType;
+	enQuestionsLevel  QuestionLevel;
+	enOperationsType OperationType;
 	int CorrectAnswer = 0;
 	int WrongAnswer = 0;
-	bool Answer;
+	bool AnswerResult = false;
 };
 
 struct stQuiz {
-	StQuestion Question;
-	short NumberOfQuestions = 0;
-	enum enQuestionsLevel  QuestionsLevel;
-	enum enOperationsType OperationsType;
+	StQuestion QuestionList[100];
+	short NumberOfQuestions ;
+	 enQuestionsLevel  QuestionsLevel;
+	 enOperationsType OperationsType;
 	short NbrCorrectAnswers = 0;
 	short NbrWrongAnswers = 0;
-	bool FinalResult;
+	bool IsPass = true;
 };
 
 /*
@@ -110,7 +109,18 @@ string OperationSignName(short OperationSignName) {
 	return  arr[OperationSignName - 1];
 }
 
-void FillQuestion(stQuiz Quiz) {
+
+StQuestion GenerateQuizQuestion() {
+
+
+}
+
+void GenerateQuizQuestions(stQuiz Quizz) {
+	StQuestion QuestionList;
+
+	for (int QuestionNumber = 0; Quizz.NumberOfQuestions; QuestionNumber++) {
+		Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz.);
+	}
 
 }
 
@@ -121,7 +131,7 @@ void PLayMathGame() {
 	Quiz.QuestionsLevel = QuestionsLevel();
 	Quiz.OperationsType = OperationType();
 
-	FillQuestion(Quiz);
+	GenerateQuizQuestions(Quiz);
 
 }
 
