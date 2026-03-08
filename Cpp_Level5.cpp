@@ -62,7 +62,7 @@ void clearScreen() {
 	system("color  0F");
 }
 
-int RandomNumber(int From, int To) {
+short RandomNumber(int From, int To) {
 	int RandomNumber = rand() % (To - From + 1) + From;                // génère un entier pseudo-aléatoire
 	return RandomNumber;
 }
@@ -109,9 +109,35 @@ string OperationSignName(short OperationSignName) {
 	return  arr[OperationSignName - 1];
 }
 
+enOperationsType GetRandomOperationType() {
+	short OperationType =  RandomNumber(1, 4);
+	return (enOperationsType)OperationType;
+}
 
-StQuestion GenerateQuizQuestion() {
+int SimpleCaluclator(StQuestion Question, enQuestionsLevel QuestionLevel, enOperationsType OpType) {
 
+}
+
+
+StQuestion GenerateQuizQuestion(enQuestionsLevel QuestionLevel, enOperationsType OpType) {
+	StQuestion Question;
+
+	if (QuestionLevel == enQuestionsLevel::MixLevel) {
+
+		QuestionLevel = (enQuestionsLevel) RandomNumber(1, 3);
+	}
+	if (OpType == enOperationsType::MixOperation) {
+		OpType = GetRandomOperationType();
+	}
+	Question.OperationType = OpType;
+
+	switch (QuestionLevel) {
+	case enQuestionsLevel::Easy:
+		Question.Num1 = RandomNumber(1, 10);
+		Question.Num2 = RandomNumber(1, 10);
+		Question.CorrectAnswer = SimpleCaluclator( Question, QuestionLevel, OpType);
+
+	}
 
 }
 
@@ -119,7 +145,7 @@ void GenerateQuizQuestions(stQuiz& Quizz) {
 	StQuestion QuestionList;
 
 	for (int QuestionNumber = 0; Quizz.NumberOfQuestions; QuestionNumber++) {
-		Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz);
+		Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz.QuestionsLevel , Quizz.OperationsType);
 	}
 
 }
@@ -128,7 +154,7 @@ void PLayMathGame() {
 	stQuiz Quiz;
 
 	Quiz.NumberOfQuestions = HowManyQuestion();
-	Quiz.QuestionsLevel = QuestionsLevel();
+	Quiz.QuestionsLevel = QuestionsLevel();  
 	Quiz.OperationsType = OperationType();
 
 	GenerateQuizQuestions(Quiz);
