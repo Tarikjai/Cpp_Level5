@@ -99,6 +99,7 @@ enOperationsType OperationType() {
 	return (enOperationsType)OperationType;
 }
 
+
 string OperationSign(short OperationSigne) {
 	string arr[5] = { "+", "-", "*", "/"," MIX "};
 	return  arr[OperationSigne - 1];
