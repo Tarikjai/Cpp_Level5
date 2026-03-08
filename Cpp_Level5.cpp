@@ -114,8 +114,11 @@ enOperationsType GetRandomOperationType() {
 	return (enOperationsType)OperationType;
 }
 
-int SimpleCaluclator(StQuestion Question, enQuestionsLevel QuestionLevel, enOperationsType OpType) {
+int SimpleCaluclator(StQuestion Question, enOperationsType OpType) {
 
+	if (OpType == enOperationsType::Add) {
+
+	}
 }
 
 
@@ -135,7 +138,7 @@ StQuestion GenerateQuizQuestion(enQuestionsLevel QuestionLevel, enOperationsType
 	case enQuestionsLevel::Easy:
 		Question.Num1 = RandomNumber(1, 10);
 		Question.Num2 = RandomNumber(1, 10);
-		Question.CorrectAnswer = SimpleCaluclator( Question, QuestionLevel, OpType);
+		Question.CorrectAnswer = SimpleCaluclator( Question, OpType);
 
 	}
 
