@@ -180,6 +180,10 @@ void PrintQuestion(stQuiz Quizz, short QuestionNumber) {
 
 	cout << "Question [" << QuestionNumber  << "/" << Quizz.NumberOfQuestions << "]\n\n";
 	cout << Quizz.QuestionList[QuestionNumber].Num1 << "\n";
+	cout << Quizz.QuestionList[QuestionNumber].Num2 << "   ";
+	cout << OperationSignName(Quizz.QuestionList[QuestionNumber].OperationType) << "\n";
+	cout << "-----------\n" << endl;
+	 
 }
 
 void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
