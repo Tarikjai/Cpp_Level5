@@ -114,13 +114,21 @@ enOperationsType GetRandomOperationType() {
 	return (enOperationsType)OperationType;
 }
 
-int SimpleCaluclator(StQuestion Question, enOperationsType OpType) {
+int SimpleCaluclator(int Num1, int Num2, enOperationsType OpType) {
 
 	if (OpType == enOperationsType::Add) {
-
+		return Num1 + Num2;
+	}
+	else  if (OpType == enOperationsType::Sub) {
+		return Num1 - Num2;
+	}
+	else  if (OpType == enOperationsType::Mul) {
+		return Num1 * Num2;
+	}
+	else  if (OpType == enOperationsType::Div) {
+		return Num1 / Num2;
 	}
 }
-
 
 StQuestion GenerateQuizQuestion(enQuestionsLevel QuestionLevel, enOperationsType OpType) {
 	StQuestion Question;
@@ -138,17 +146,47 @@ StQuestion GenerateQuizQuestion(enQuestionsLevel QuestionLevel, enOperationsType
 	case enQuestionsLevel::Easy:
 		Question.Num1 = RandomNumber(1, 10);
 		Question.Num2 = RandomNumber(1, 10);
-		Question.CorrectAnswer = SimpleCaluclator( Question, OpType);
-
+		Question.CorrectAnswer = SimpleCaluclator(Question.Num1, Question.Num2, Question.OperationType);
+		Question.QuestionLevel = QuestionLevel;
+		return Question ;
+	 
+	case enQuestionsLevel::Medium:
+		Question.Num1 = RandomNumber(11, 50);
+		Question.Num2 = RandomNumber(11, 50);
+		Question.CorrectAnswer = SimpleCaluclator(Question.Num1, Question.Num2, Question.OperationType);
+		Question.QuestionLevel = QuestionLevel;
+		return Question;
+	 
+	case enQuestionsLevel::Hard:
+		Question.Num1 = RandomNumber(51, 100);
+		Question.Num2 = RandomNumber(51, 100);
+		Question.CorrectAnswer = SimpleCaluclator(Question.Num1, Question.Num2, Question.OperationType);
+		Question.QuestionLevel = QuestionLevel;
+		return Question;
 	}
 
 }
 
 void GenerateQuizQuestions(stQuiz& Quizz) {
-	StQuestion QuestionList;
 
-	for (int QuestionNumber = 0; Quizz.NumberOfQuestions; QuestionNumber++) {
+	for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions ; QuestionNumber++) {
 		Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz.QuestionsLevel , Quizz.OperationsType);
+	}
+
+}
+
+void PrintQuestion(stQuiz Quizz, short QuestionNumber) {
+
+	cout << "Question [" << QuestionNumber  << "/" << Quizz.NumberOfQuestions << "]\n\n";
+	cout << Quizz.QuestionList[QuestionNumber].Num1 << "\n";
+}
+
+void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
+
+	for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions; QuestionNumber++) {
+
+		PrintQuestion(Quizz, QuestionNumber);
+	/*	Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz.QuestionsLevel, Quizz.OperationsType);*/
 	}
 
 }
@@ -161,6 +199,7 @@ void PLayMathGame() {
 	Quiz.OperationsType = OperationType();
 
 	GenerateQuizQuestions(Quiz);
+	AskAndCorrectQuestionListAnswer(Quiz);
 
 }
 

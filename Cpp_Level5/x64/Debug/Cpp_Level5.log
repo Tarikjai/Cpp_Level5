@@ -1,2 +1,4 @@
 ﻿  Cpp_Level5.cpp
-C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(116,1): error C4716: 'GenerateQuizQuestion': must return a value
+C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(131,1): warning C4715: 'SimpleCaluclator': not all control paths return a value
+C:\Users\Professional\Documents\C++\Cpp_Level5\Cpp_Level5.cpp(168,1): warning C4715: 'GenerateQuizQuestion': not all control paths return a value
+  Cpp_Level5.vcxproj -> C:\Users\Professional\Documents\C++\Cpp_Level5\x64\Debug\Cpp_Level5.exe
