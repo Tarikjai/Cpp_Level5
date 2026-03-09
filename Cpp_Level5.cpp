@@ -93,7 +93,7 @@ string LevelName(short LevelName) {
 enOperationsType OperationType() {
 	short OperationType;
 	do {
-		cout << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div, [5] Mix  ? ";
+		cout << "Enter Operation Type [1]   Add, [2] Sub, [3] Mul, [4] Div, [5] Mix  ? ";
 		cin >> OperationType;
 	} while (OperationType < 1 || OperationType >5);
 	return (enOperationsType)OperationType;
