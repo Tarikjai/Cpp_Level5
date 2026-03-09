@@ -190,7 +190,7 @@ void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
 	for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions; QuestionNumber++) {
 
 		PrintQuestion(Quizz, QuestionNumber);
-	/*	Quizz.QuestionList[QuestionNumber] = GenerateQuizQuestion(Quizz.QuestionsLevel, Quizz.OperationsType);*/
+		Quizz.QuestionList[QuestionNumber]. = GenerateQuizQuestion(Quizz.QuestionsLevel, Quizz.OperationsType);
 	}
 
 }
