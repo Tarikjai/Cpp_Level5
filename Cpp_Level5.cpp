@@ -188,7 +188,7 @@ int PlayerAnswer() {
 }
 
 
-void checkAnswer(stQuiz Quizz, short QuestionNumber) {
+void CorrectTheQuestionAnswer(stQuiz Quizz, short QuestionNumber) {
 
 	if (Quizz.QuestionList[QuestionNumber].PlayerAnswer == Quizz.QuestionList[QuestionNumber].CorrectAnswer) {
 	  Quizz.QuestionList[QuestionNumber].AnswerResult = true;
@@ -212,7 +212,7 @@ void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
 		PrintQuestion(Quizz, QuestionNumber);
 		Quizz.QuestionList[QuestionNumber].PlayerAnswer = PlayerAnswer();
 		
-		checkAnswer(Quizz, QuestionNumber);
+		CorrectTheQuestionAnswer(Quizz, QuestionNumber);
 
 	}
 }
