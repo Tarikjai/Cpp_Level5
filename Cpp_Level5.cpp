@@ -45,15 +45,12 @@ void PrintColor(short correctAnswer, short WorngAnswer) {
 	}
 }
 
-string FinalResult(short correctAnswer, short WorngAnswer) {
-	if (correctAnswer > WorngAnswer) {
-		return "Pass :-)";
+bool FinalResult(stQuiz  Quizz) {
+	if (Quizz.NbrCorrectAnswers > Quizz.NbrWrongAnswers) {
+		return Quizz.IsPass = true;
 	}
-	else if (correctAnswer < WorngAnswer) {
-		return "Fail :-(";
-	}
-	else {
-		return "No Winner";
+	else if (Quizz.NbrCorrectAnswers < Quizz.NbrWrongAnswers) {
+		return Quizz.IsPass = false;
 	}
 }
 
@@ -179,11 +176,10 @@ void PrintQuestion(stQuiz Quizz, short QuestionNumber) {
 
 	cout << "Question [" << QuestionNumber  << "/" << Quizz.NumberOfQuestions << "]\n\n";
 	cout << Quizz.QuestionList[QuestionNumber].Num1 << "\n";
-	cout << Quizz.QuestionList[QuestionNumber].Num2 << "   ";
+	cout << Quizz.QuestionList[QuestionNumber].Num2 << "  ";
 	cout << OperationSignName(Quizz.QuestionList[QuestionNumber].OperationType) << "\n";
-	cout << "-----------\n" << endl;
+	cout << "-----------\n" ;
 }
-
 
 int PlayerAnswer() {
 	int answer;
@@ -191,12 +187,33 @@ int PlayerAnswer() {
 	return answer;
 }
 
+
+void checkAnswer(stQuiz Quizz, short QuestionNumber) {
+
+	if (Quizz.QuestionList[QuestionNumber].PlayerAnswer == Quizz.QuestionList[QuestionNumber].CorrectAnswer) {
+	  Quizz.QuestionList[QuestionNumber].AnswerResult = true;
+
+	    cout << "Right Answer :-)\n\n\n";
+		Quizz.NbrCorrectAnswers++;
+	}
+	else {
+		cout << "Wrong Answer :-)\n";
+		cout << "The right answer is: "<< Quizz.QuestionList[QuestionNumber].CorrectAnswer <<"\n\n\n";
+		Quizz.NbrWrongAnswers++;
+	}
+
+	FinalResult( Quizz);
+}
+
 void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
 
 	for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions; QuestionNumber++) {
 
 		PrintQuestion(Quizz, QuestionNumber);
-		Quizz.QuestionList[QuestionNumber]. = PlayerAnswer();
+		Quizz.QuestionList[QuestionNumber].PlayerAnswer = PlayerAnswer();
+		
+		checkAnswer(Quizz, QuestionNumber);
+
 	}
 }
 
