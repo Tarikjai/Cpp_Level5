@@ -12,7 +12,7 @@ struct StQuestion {
 	enQuestionsLevel  QuestionLevel;
 	enOperationsType OperationType;
 	int CorrectAnswer = 0;
-	int WrongAnswer = 0;
+	int PlayerAnswer = 0;
 	bool AnswerResult = false;
 };
 
@@ -182,7 +182,6 @@ void PrintQuestion(stQuiz Quizz, short QuestionNumber) {
 	cout << Quizz.QuestionList[QuestionNumber].Num2 << "   ";
 	cout << OperationSignName(Quizz.QuestionList[QuestionNumber].OperationType) << "\n";
 	cout << "-----------\n" << endl;
-	 
 }
 
 
