@@ -159,9 +159,8 @@ StQuestion GenerateQuizQuestion(enQuestionsLevel QuestionLevel, enOperationsType
 		Question.Num2 = RandomNumber(51, 100);
 		Question.CorrectAnswer = SimpleCaluclator(Question.Num1, Question.Num2, Question.OperationType);
 		Question.QuestionLevel = QuestionLevel;
-		return Question;
+		return  Question;
 	}
-
 }
 
 void GenerateQuizQuestions(stQuiz& Quizz) {
