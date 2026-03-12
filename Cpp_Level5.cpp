@@ -23,7 +23,7 @@ struct stQuiz {
 	 enOperationsType OperationsType;
 	short NbrCorrectAnswers = 0;
 	short NbrWrongAnswers = 0;
-	bool IsPass = true;
+	bool IsPass = false;
 };
 
 /*
@@ -33,16 +33,14 @@ RandomNumber(11, 20);
 RandomNumber(1, 10);
 */
 
-void PrintColor(short correctAnswer, short WorngAnswer) {
-	if (correctAnswer > WorngAnswer) {
+void PrintColor(stQuiz  Quizz, short QuestionNumber) {
+	if (Quizz.QuestionList[QuestionNumber].AnswerResult == true) {
 		system("color  2F");
 	} 
-	else if (correctAnswer <  WorngAnswer) {
+	else  {
 		system("color  4F");
 	}
-	else {
-		system("color  0F");
-	}
+	 
 }
 
 bool FinalResult(stQuiz  Quizz) {
@@ -188,24 +186,26 @@ int PlayerAnswer() {
 }
 
 
-void CorrectTheQuestionAnswer(stQuiz Quizz, short QuestionNumber) {
+void CorrectTheQuestionAnswer(stQuiz& Quizz, short QuestionNumber) {
 
-	if (Quizz.QuestionList[QuestionNumber].PlayerAnswer == Quizz.QuestionList[QuestionNumber].CorrectAnswer) {
-	  Quizz.QuestionList[QuestionNumber].AnswerResult = true;
+		if (Quizz.QuestionList[QuestionNumber].PlayerAnswer != Quizz.QuestionList[QuestionNumber].CorrectAnswer) {
 
-	    cout << "Right Answer :-)\n\n\n";
-		Quizz.NbrCorrectAnswers++;
-	}
-	else {
-		cout << "Wrong Answer :-)\n";
-		cout << "The right answer is: "<< Quizz.QuestionList[QuestionNumber].CorrectAnswer <<"\n\n\n";
-		Quizz.NbrWrongAnswers++;
-	}
+			  Quizz.QuestionList[QuestionNumber].AnswerResult = false;
+			  cout << "Wrong Answer :-)\n";
+			  cout << "The right answer is: " << Quizz.QuestionList[QuestionNumber].CorrectAnswer << "\n\n\n";
+			  Quizz.NbrWrongAnswers++;
+		  
+		}
+		else {
+			Quizz.QuestionList[QuestionNumber].AnswerResult = true;
+			cout << "Right Answer :-)\n\n\n";
+			Quizz.NbrCorrectAnswers++;
+		}
+	PrintColor(Quizz, QuestionNumber);
 
-	FinalResult( Quizz);
 }
 
-void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
+void AskAndCorrectQuestionListAnswer(stQuiz& Quizz) {
 
 	for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions; QuestionNumber++) {
 
@@ -213,38 +213,50 @@ void AskAndCorrectQuestionListAnswer(stQuiz Quizz) {
 		Quizz.QuestionList[QuestionNumber].PlayerAnswer = PlayerAnswer();
 		
 		CorrectTheQuestionAnswer(Quizz, QuestionNumber);
-
 	}
+
+	Quizz.IsPass = Quizz.NbrCorrectAnswers > Quizz.NbrWrongAnswers;
+
 }
 
+
+string checkWinner(stQuiz Quizz) {
+	if (Quizz.IsPass){
+		return " You WIN";
+	}
+	else {
+		return " You loose";
+	}
+
+}
+
+ 
+
+ 
+void PrintFinalResult(stQuiz Quizz) {
+
+	cout << "\n\n----------------------------------------------------------\n\n";
+	cout << "Final Result is " << checkWinner(Quizz) <<  "\n";
+	cout << "\n\n----------------------------------------------------------\n";
+	cout << "\nNumber Of Question:" << Quizz.NumberOfQuestions  << "\n";
+	cout << "Questions Level: " << LevelName(Quizz.QuestionsLevel) << "\n";
+	cout << "Op Type : " << OperationSign(Quizz.OperationsType) << "\n";
+	cout << "Number of Right Answers :" << Quizz.NbrCorrectAnswers << "\n";
+	cout << "Number of Wrong Answers :" << Quizz.NbrWrongAnswers << "\n";
+	cout << "\n----------------------------------------------------------\n";
+}
+ 
 void PLayMathGame() {
 	stQuiz Quiz;
 
 	Quiz.NumberOfQuestions = HowManyQuestion();
-	Quiz.QuestionsLevel = QuestionsLevel();  
+	Quiz.QuestionsLevel = QuestionsLevel();
 	Quiz.OperationsType = OperationType();
 
 	GenerateQuizQuestions(Quiz);
 	AskAndCorrectQuestionListAnswer(Quiz);
-
+	PrintFinalResult(Quiz);
 }
-
-/*
-void PrintFinalResult(stGameResult GameResult) {
-
-	PrintColor(GameResult.NbrCorrectAnswers, GameResult.NbrWrongAnswers);
-
-	cout << "\n\n----------------------------------------------------------\n\n";
-	cout << "Final Result is " << FinalResult(GameResult.NbrCorrectAnswers, GameResult.NbrWrongAnswers);
-	cout << "\n\n----------------------------------------------------------\n";
-	cout << "\nNumber Of Question:" << GameResult.NumberOfQuestions  << "\n";
-	cout << "Questions Level: " << GameResult.LevelName << "\n";
-	cout << "Op Type :" << GameResult.OpName << "\n";
-	cout << "Number of Right Answers :" << GameResult.NbrCorrectAnswers << "\n";
-	cout << "Number of Wrong Answers :" << GameResult.NbrWrongAnswers << "\n";
-	cout << "\n----------------------------------------------------------\n";
-}
-*/
 
 void StartGame() {
 	string playGame = "Y";
