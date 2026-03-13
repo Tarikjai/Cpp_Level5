@@ -230,7 +230,6 @@ string checkWinner(stQuiz Quizz) {
 
 }
 
- 
 
  
 void PrintFinalResult(stQuiz Quizz) {
