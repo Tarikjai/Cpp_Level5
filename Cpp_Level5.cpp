@@ -185,7 +185,6 @@ int PlayerAnswer() {
 	return answer;
 }
 
-
 void CorrectTheQuestionAnswer(stQuiz& Quizz, short QuestionNumber) {
 
 		if (Quizz.QuestionList[QuestionNumber].PlayerAnswer != Quizz.QuestionList[QuestionNumber].CorrectAnswer) {
@@ -202,7 +201,6 @@ void CorrectTheQuestionAnswer(stQuiz& Quizz, short QuestionNumber) {
 			Quizz.NbrCorrectAnswers++;
 		}
 	PrintColor(Quizz, QuestionNumber);
-
 }
 
 void AskAndCorrectQuestionListAnswer(stQuiz& Quizz) {
@@ -219,7 +217,6 @@ void AskAndCorrectQuestionListAnswer(stQuiz& Quizz) {
 
 }
 
-
 string checkWinner(stQuiz Quizz) {
 	if (Quizz.IsPass){
 		return " You WIN";
@@ -230,8 +227,6 @@ string checkWinner(stQuiz Quizz) {
 
 }
 
-
- 
 void PrintFinalResult(stQuiz Quizz) {
 
 	cout << "\n\n----------------------------------------------------------\n\n";
