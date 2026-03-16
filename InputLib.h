@@ -19,4 +19,37 @@ namespace InputLib
 		return RandomNumber;
 	}
 
+	string GetOperationName(int Optype) {
+
+		string arr[5] = { "+", "-", "*", "/", "Mix" };
+
+		return arr[Optype - 1];
+	}
+
+
+	string GetLevelName(int LevelName) {
+
+		string arr[4] = { "Easy", "Medium", "Hard", "Mix"};
+
+		return arr[LevelName - 1];
+	}
+
+	int PAnswer() {
+		int answer;
+		cin>> answer;
+		return answer;
+	}
+
+	string FinalResult(bool result) {
+
+		if (result) {
+			return "PASS";
+		}
+		else {
+			return "FAIL";
+		}
+	}
+
+
+
 }
