@@ -14,4 +14,9 @@ namespace InputLib
 		return QuestionNumber;
 	}
 
+	int RandomNumber(int From, int To) {
+		int RandomNumber = rand() % (To - From + 1) + From;
+		return RandomNumber;
+	}
+
 }

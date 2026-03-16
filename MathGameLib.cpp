@@ -44,8 +44,39 @@ enOperationType OperationsType() {
 	return (enOperationType)OperationsType;
 }
 
-stQuestion GenerateQuizQuestion(enOperationType OpType, enLevelType LevelType) {
+enOperationType GetOperationType() {
+	int opType= InputLib::RandomNumber(1, 4);
+	return (enOperationType)opType;
+}
 
+int simpleCalculator(int Num1, int Num2, enOperationType OpType) {
+	if (enOperationType::Add) {
+		return Num1 + Num2;
+	}
+}
+
+
+stQuestion GenerateQuizQuestion(enOperationType OpType, enLevelType LevelType) {
+	stQuestion Question;
+
+	if (LevelType == enLevelType::MixLevel) {
+		LevelType = (enLevelType)InputLib::RandomNumber(1, 3);
+	}
+	if (OpType == enOperationType::MixOp) {
+		OpType = GetOperationType();
+	}
+	Question.OperationType = OpType;
+
+	switch (LevelType) {
+	case enLevelType::Easy:
+		Question.Num1 = InputLib::RandomNumber(1, 10);
+		Question.Num2 = InputLib::RandomNumber(1, 10);
+		Question.CorrectAnswer = simpleCalculator(Question.Num1, Question.Num2, OpType);
+		Question.LevelType = LevelType;
+	}
+
+
+	return Question;
 }
 
 
@@ -63,7 +94,7 @@ void PlayGame() {
 	Quiz.OperationsType =  OperationsType();
 	Quiz.LevelsType = QuestionsLevel();
 
-	GenerateQuizQuestion(Quiz)
+	GenerateQuizQuestion(Quiz);
 
 }
 
