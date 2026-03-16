@@ -1,2 +1,4 @@
 ﻿  MathGameLib.cpp
+C:\Users\Professional\Documents\C++\Cpp_Level5\MathGameLib.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Professional\Documents\C++\Cpp_Level5\MathGameLib.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Cpp_Level5.vcxproj -> C:\Users\Professional\Documents\C++\Cpp_Level5\x64\Debug\Cpp_Level5.exe
