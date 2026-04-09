@@ -7,7 +7,6 @@ using namespace std;
 enum enOperationType { Add = 1, Sub = 2, Multi = 3, Divid = 4, MixOp = 5 };
 enum enLevelType { Easy = 1, Medium = 2, Hard = 3, MixLevel = 4 };
 
-
 struct stQuestion {
 	int Num1 = 0;
 	int Num2 = 0;
@@ -47,7 +46,6 @@ enOperationType GetOperationType() {
 	int opType= InputLib::RandomNumber(1, 4);
 	return (enOperationType)opType;
 }
-
 
 int simpleCalculator(int Num1, int Num2, enOperationType OpType) {
 	if (OpType == enOperationType::Add) {
@@ -104,7 +102,6 @@ void GenerateQuizQuestion(stQuiz& Quiz) {
 	}
 }
 
-
 void PrintQuestion(stQuiz Quiz, int QuestionNumber) {
 	cout << "\nQuestion [" << QuestionNumber + 1 << "/" << Quiz.NumberOfQuestions << "]" << endl;
 	cout << "\n";
@@ -138,10 +135,6 @@ void AskAndCorrectAnswer(stQuiz& Quiz) {
 	}
 	Quiz.isPass = (Quiz.NumberOfCorrectAnswer > Quiz.NumberOfWrongAnswer);
 }
-
-
-
-
 void PrintFinalResult(stQuiz Quiz) {
 	ColorLib::DisplayColor(Quiz.isPass);
 	cout << "\n\n----------------------\n";

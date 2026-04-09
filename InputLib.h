@@ -8,7 +8,7 @@ namespace InputLib
 	int QuestionNumber() {
 		int QuestionNumber;
 		do {
-			cout << "How Many Questions do you want to answer? ";
+			cout << "How Many Questions do you want to  answer? ";
 			cin >> QuestionNumber;
 		} while (QuestionNumber < 1 || QuestionNumber >10);
 		return QuestionNumber;
